@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
+import 'home_page.dart';
 
 class DashboardPage extends StatefulWidget {
   final int currentTab;
@@ -18,7 +19,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   late int _selectedIndex;
   final List<Widget> _pages = [
-    // const HomePage(),
+    const HomePage(),
     // const SearchPage(),
     // const CartPage(),
     // const Center(
