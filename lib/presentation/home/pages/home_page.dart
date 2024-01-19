@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -8,7 +9,6 @@ import '../../../core/router/app_router.dart';
 import '../models/product_model.dart';
 import '../models/store_model.dart';
 import '../widgets/banner_slider.dart';
-// import '../widgets/organism/menu_categories.dart';
 import '../widgets/organism/product_list.dart';
 import '../widgets/title_content.dart';
 
@@ -266,7 +266,7 @@ class _HomePageState extends State<HomePage> {
             onSeeAllTap: () {},
           ),
           const SpaceHeight(12.0),
-          // const MenuCategories(),
+          const MenuCategories(),
           const SpaceHeight(50.0),
           ProductList(
             title: 'Featured Product',
