@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
@@ -215,6 +217,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     searchController = TextEditingController();
+    context.read<AllProductBloc>().add(const AllProductEvent.getProducts());
     super.initState();
   }
 
@@ -275,36 +278,121 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Featured Product',
-            onSeeAllTap: () {},
-            items: featuredProducts,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Featured Product',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) {
+                  return Center(
+                    child: Text(message),
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
           BannerSlider(items: banners2),
           const SpaceHeight(28.0),
-          ProductList(
-            title: 'Best Sellers',
-            onSeeAllTap: () {},
-            items: bestSellers,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Best Seller Product',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) {
+                  return Center(
+                    child: Text(message),
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'New Arrivals',
-            onSeeAllTap: () {},
-            items: newArrivals,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (products) {
+                  return ProductList(
+                    title: 'New Arrival',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) {
+                  return Center(
+                    child: Text(message),
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Top Rated Product',
-            onSeeAllTap: () {},
-            items: topRatedProducts,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Top rated Product',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) {
+                  return Center(
+                    child: Text(message),
+                  );
+                },
+              );
+            },
           ),
           const SpaceHeight(50.0),
-          ProductList(
-            title: 'Special Offers',
-            onSeeAllTap: () {},
-            items: specialOffers,
+          BlocBuilder<AllProductBloc, AllProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                loaded: (products) {
+                  return ProductList(
+                    title: 'Special offers',
+                    onSeeAllTap: () {},
+                    items: products,
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (message) {
+                  return Center(
+                    child: Text(message),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),

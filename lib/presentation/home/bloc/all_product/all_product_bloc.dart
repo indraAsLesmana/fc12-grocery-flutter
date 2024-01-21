@@ -14,6 +14,7 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
     this._productApi,
   ) : super(const _Initial()) {
     on<_GetProducts>((event, emit) async {
+      emit(const AllProductState.loading());
       final response = await _productApi.getAllProducts();
       response.fold(
         (l) => emit(const AllProductState.error('Internal Server Error')),

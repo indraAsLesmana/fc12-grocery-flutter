@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
 
 import '../../../../core/components/spaces.dart';
 import '../../models/product_model.dart';
@@ -8,7 +9,7 @@ import '../title_content.dart';
 class ProductList extends StatelessWidget {
   final String title;
   final VoidCallback onSeeAllTap;
-  final List<ProductModel> items;
+  final List<Product> items;
 
   const ProductList({
     super.key,
