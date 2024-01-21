@@ -4,7 +4,7 @@ import 'package:flutter_fic12_grocery_app/data/models/product_response_model/pro
 import 'package:http/http.dart' as http;
 
 class ProductApi {
-  Future<Either<String, ProductResponseModel>> getProducts() async {
+  Future<Either<String, ProductResponseModel>> getAllProducts() async {
     final response =
         await http.get(Uri.parse('${Variables.baseUrl}/api/products'));
 
