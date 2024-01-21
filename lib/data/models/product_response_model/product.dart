@@ -40,7 +40,8 @@ class Product {
         price: data['price'] as String?,
         productId: data['product_id'] as String?,
         description: data['description'] as String?,
-        image: data['image'] as List<String>?,
+        image:
+            (data['image'] as List<dynamic>?)?.map((e) => e as String).toList(),
         brand: data['brand'] as String?,
         category: data['category'] as String?,
       );
@@ -62,8 +63,12 @@ class Product {
   /// `dart:convert`
   ///
   /// Parses the string and returns the resulting Json object as [Product].
+  // factory Product.fromJson(String data) {
+  //   return Product.fromMap(json.decode(data) as Map<String, dynamic>);
+  // }
+
   factory Product.fromJson(String data) {
-    return Product.fromMap(json.decode(data) as Map<String, dynamic>);
+    return Product.fromMap(json.decode(data));
   }
 
   /// `dart:convert`
