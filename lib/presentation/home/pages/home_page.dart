@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/search_input.dart';
@@ -266,7 +267,13 @@ class _HomePageState extends State<HomePage> {
             onSeeAllTap: () {},
           ),
           const SpaceHeight(12.0),
-          const MenuCategories(),
+          SizedBox(
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey.shade300,
+              highlightColor: Colors.grey.shade100,
+              child: const MenuCategories(),
+            ),
+          ),
           const SpaceHeight(50.0),
           ProductList(
             title: 'Featured Product',
