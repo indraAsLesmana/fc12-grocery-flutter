@@ -270,13 +270,14 @@ class _HomePageState extends State<HomePage> {
             onSeeAllTap: () {},
           ),
           const SpaceHeight(12.0),
-          SizedBox(
-            child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
-              child: const MenuCategories(),
-            ),
-          ),
+          // SizedBox(
+          //   child: Shimmer.fromColors(
+          //     baseColor: Colors.grey.shade300,
+          //     highlightColor: Colors.grey.shade100,
+          //     child: const MenuCategories(),
+          //   ),
+          // ),
+          const MenuCategories(),
           const SpaceHeight(50.0),
           BlocBuilder<AllProductBloc, AllProductState>(
             builder: (context, state) {
