@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 
 class Product {
   int? id;
@@ -75,4 +78,64 @@ class Product {
   ///
   /// Converts [Product] to a JSON string.
   String toJson() => json.encode(toMap());
+
+  @override
+  bool operator ==(covariant Product other) {
+    if (identical(this, other)) return true;
+
+    return other.id == id &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt &&
+        other.url == url &&
+        other.name == name &&
+        other.price == price &&
+        other.productId == productId &&
+        other.description == description &&
+        listEquals(other.image, image) &&
+        other.brand == brand &&
+        other.category == category;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode ^
+        url.hashCode ^
+        name.hashCode ^
+        price.hashCode ^
+        productId.hashCode ^
+        description.hashCode ^
+        image.hashCode ^
+        brand.hashCode ^
+        category.hashCode;
+  }
+
+  Product copyWith({
+    int? id,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? url,
+    String? name,
+    String? price,
+    String? productId,
+    String? description,
+    List<String>? image,
+    String? brand,
+    String? category,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      url: url ?? this.url,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      productId: productId ?? this.productId,
+      description: description ?? this.description,
+      image: image ?? this.image,
+      brand: brand ?? this.brand,
+      category: category ?? this.category,
+    );
+  }
 }

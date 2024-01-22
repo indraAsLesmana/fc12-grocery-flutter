@@ -4,6 +4,7 @@ import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all
 import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:badges/badges.dart' as badges;
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/search_input.dart';
@@ -233,18 +234,24 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Cwb Store'),
         actions: [
+          badges.Badge(
+            badgeContent: const Text(
+              '3',
+              style: TextStyle(color: Colors.white),
+            ),
+            child: IconButton(
+              onPressed: () {
+                context.goNamed(
+                  RouteConstants.cart,
+                  pathParameters: PathParameters().toMap(),
+                );
+              },
+              icon: Assets.icons.cart.svg(height: 24.0),
+            ),
+          ),
           IconButton(
             onPressed: () {},
             icon: Assets.icons.notification.svg(height: 24.0),
-          ),
-          IconButton(
-            onPressed: () {
-              context.goNamed(
-                RouteConstants.cart,
-                pathParameters: PathParameters().toMap(),
-              );
-            },
-            icon: Assets.icons.cart.svg(height: 24.0),
           ),
         ],
       ),
