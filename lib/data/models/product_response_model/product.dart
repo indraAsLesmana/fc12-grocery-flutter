@@ -138,4 +138,9 @@ class Product {
       category: category ?? this.category,
     );
   }
+
+  @override
+  String toString() {
+    return 'Product(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, url: $url, name: $name, price: $price, productId: $productId, description: $description, image: $image, brand: $brand, category: $category)';
+  }
 }

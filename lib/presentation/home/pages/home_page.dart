@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
@@ -220,9 +222,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     searchController = TextEditingController();
     context.read<AllProductBloc>().add(const AllProductEvent.getProducts());
-    context
-        .read<AllProductBloc>()
-        .add(const AllProductEvent.getProductsBestSeller());
+
+    Future.delayed(const Duration(seconds: 2), () {
+      context
+          .read<AllProductBloc>()
+          .add(const AllProductEvent.getProductsBestSeller());
+    });
     super.initState();
   }
 
@@ -302,11 +307,12 @@ class _HomePageState extends State<HomePage> {
           //   ),
           // ),
           const MenuCategories(),
-          const SpaceHeight(50.0),
+          const SpaceHeight(28.0),
           BlocBuilder<AllProductBloc, AllProductState>(
             builder: (context, state) {
               return state.maybeWhen(
                 loaded: (products) {
+                  log("featured ${products.toString()}");
                   return ProductList(
                     title: 'Featured Product',
                     onSeeAllTap: () {},
@@ -331,76 +337,8 @@ class _HomePageState extends State<HomePage> {
           BlocBuilder<AllProductBloc, AllProductState>(
             builder: (context, state) {
               return state.maybeWhen(
-                loaded: (products) {
-                  return ProductList(
-                    title: 'Best Seller Product',
-                    onSeeAllTap: () {},
-                    items: products,
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) {
-                  return Center(
-                    child: Text(message),
-                  );
-                },
-              );
-            },
-          ),
-          const SpaceHeight(50.0),
-          BlocBuilder<AllProductBloc, AllProductState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                loaded: (products) {
-                  return ProductList(
-                    title: 'New Arrival',
-                    onSeeAllTap: () {},
-                    items: products,
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) {
-                  return Center(
-                    child: Text(message),
-                  );
-                },
-              );
-            },
-          ),
-          const SpaceHeight(50.0),
-          BlocBuilder<AllProductBloc, AllProductState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                loaded: (products) {
-                  return ProductList(
-                    title: 'Top rated Product',
-                    onSeeAllTap: () {},
-                    items: products,
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) {
-                  return Center(
-                    child: Text(message),
-                  );
-                },
-              );
-            },
-          ),
-          const SpaceHeight(50.0),
-          BlocBuilder<AllProductBloc, AllProductState>(
-            builder: (context, state) {
-              return state.maybeWhen(
                 loadedBestSeller: (products) {
+                  log("Special ${products.toString()}");
                   return ProductList(
                     title: 'Special offers',
                     onSeeAllTap: () {},
