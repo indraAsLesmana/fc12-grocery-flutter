@@ -220,6 +220,9 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     searchController = TextEditingController();
     context.read<AllProductBloc>().add(const AllProductEvent.getProducts());
+    context
+        .read<AllProductBloc>()
+        .add(const AllProductEvent.getProductsBestSeller());
     super.initState();
   }
 
@@ -233,7 +236,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cwb Store'),
+        title: const Text('Grocery Store'),
         actions: [
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
@@ -397,7 +400,7 @@ class _HomePageState extends State<HomePage> {
           BlocBuilder<AllProductBloc, AllProductState>(
             builder: (context, state) {
               return state.maybeWhen(
-                loaded: (products) {
+                loadedBestSeller: (products) {
                   return ProductList(
                     title: 'Special offers',
                     onSeeAllTap: () {},

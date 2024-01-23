@@ -14,12 +14,27 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
     this._productApi,
   ) : super(const _Initial()) {
     on<_GetProducts>((event, emit) async {
-      emit(const AllProductState.loading());
-      final response = await _productApi.getAllProducts();
-      response.fold(
-        (l) => emit(const AllProductState.error('Internal Server Error')),
-        (r) => emit(AllProductState.loaded(r.data!.data!)),
-      );
+      await _fetchProducts(null, emit);
     });
+
+    on<_GetProductsBestSeller>((event, emit) async {
+      await _fetchProducts('Fruits', emit);
+    });
+  }
+
+  Future<void> _fetchProducts(
+      String? query, Emitter<AllProductState> emit) async {
+    emit(const AllProductState.loading());
+
+    final response = await _productApi.getAllProducts(query);
+
+    response.fold(
+      (l) => emit(const AllProductState.error('Internal Server Error')),
+      (r) => emit(
+        query != null
+            ? AllProductState.loadedBestSeller(r.data!.data!)
+            : AllProductState.loaded(r.data!.data!),
+      ),
+    );
   }
 }

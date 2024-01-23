@@ -4,9 +4,14 @@ import 'package:flutter_fic12_grocery_app/data/models/product_response_model/pro
 import 'package:http/http.dart' as http;
 
 class ProductApi {
-  Future<Either<String, ProductResponseModel>> getAllProducts() async {
-    final response =
-        await http.get(Uri.parse('${Variables.baseUrl}/api/products'));
+  Future<Either<String, ProductResponseModel>> getAllProducts(
+      [String? category]) async {
+    final uri = Uri.parse('${Variables.baseUrl}/api/products');
+    final response = await http.get(
+      category != null
+          ? uri.replace(queryParameters: {'category': category})
+          : uri,
+    );
 
     if (response.statusCode == 200) {
       return Right(ProductResponseModel.fromJson(response.body));
