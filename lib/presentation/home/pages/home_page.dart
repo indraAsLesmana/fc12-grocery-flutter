@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
@@ -218,16 +219,14 @@ class _HomePageState extends State<HomePage> {
     Assets.images.banner2.path,
   ];
 
+  final AllProductBloc featureProductBloc = AllProductBloc(ProductApi());
+  final AllProductBloc spesialProductBloc = AllProductBloc(ProductApi());
+
   @override
   void initState() {
     searchController = TextEditingController();
-    context.read<AllProductBloc>().add(const AllProductEvent.getProducts());
-
-    Future.delayed(const Duration(seconds: 2), () {
-      context
-          .read<AllProductBloc>()
-          .add(const AllProductEvent.getProductsBestSeller());
-    });
+    featureProductBloc.add(const AllProductEvent.getProducts());
+    spesialProductBloc.add(const AllProductEvent.getProductsBestSeller());
     super.initState();
   }
 
@@ -309,6 +308,7 @@ class _HomePageState extends State<HomePage> {
           const MenuCategories(),
           const SpaceHeight(28.0),
           BlocBuilder<AllProductBloc, AllProductState>(
+            bloc: featureProductBloc,
             builder: (context, state) {
               return state.maybeWhen(
                 loaded: (products) {
@@ -331,10 +331,9 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-          const SpaceHeight(50.0),
-          BannerSlider(items: banners2),
           const SpaceHeight(28.0),
           BlocBuilder<AllProductBloc, AllProductState>(
+            bloc: spesialProductBloc,
             builder: (context, state) {
               return state.maybeWhen(
                 loadedBestSeller: (products) {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/data/models/category_response_model/category_api.dart';
-import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
-import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/category/category_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 
@@ -23,9 +21,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => CategoryBloc(CategoryApi()),
-        ),
-        BlocProvider(
-          create: (context) => AllProductBloc(ProductApi()),
         ),
         BlocProvider(
           create: (context) => CheckoutBloc(),
