@@ -143,4 +143,12 @@ class Product {
   String toString() {
     return 'Product(id: $id, createdAt: $createdAt, updatedAt: $updatedAt, url: $url, name: $name, price: $price, productId: $productId, description: $description, image: $image, brand: $brand, category: $category)';
   }
+
+  double? getPriceAsDouble() {
+    if (price != null) {
+      String value = price!.replaceAll(RegExp(r'[^\d.]'), '');
+      return double.tryParse(value);
+    }
+    return null;
+  }
 }
