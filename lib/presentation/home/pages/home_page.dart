@@ -313,7 +313,6 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
               return state.maybeWhen(
                 loaded: (products) {
-                  log("featured ${products.toString()}");
                   return ProductList(
                     title: 'Featured Product',
                     onSeeAllTap: () {},
@@ -338,7 +337,6 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
               return state.maybeWhen(
                 loadedBestSeller: (products) {
-                  log("Special ${products.toString()}");
                   return ProductList(
                     title: 'Special offers',
                     onSeeAllTap: () {},

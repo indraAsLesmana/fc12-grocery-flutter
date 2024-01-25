@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
@@ -145,9 +146,25 @@ class Product {
   }
 
   double? getPriceAsDouble() {
+    // if (price != null) {
+    //   String value = price!.replaceAll(RegExp(r'[^\d.]'), '');
+    //   if (kDebugMode) {
+    //     print("price: $value");
+    //   }
+    //   return double.tryParse(value);
+    // }
+    // return null;
+
     if (price != null) {
-      String value = price!.replaceAll(RegExp(r'[^\d.]'), '');
-      return double.tryParse(value);
+      // Extract the numerical value from the price string
+      RegExp regExp = RegExp(r'\d+(\.\d+)?');
+      RegExpMatch? match = regExp.firstMatch(price!);
+      if (match != null) {
+        String numericValue = match.group(0)!;
+        // Convert the extracted value to a double
+        print("price: $numericValue");
+        return double.tryParse(numericValue);
+      }
     }
     return null;
   }
