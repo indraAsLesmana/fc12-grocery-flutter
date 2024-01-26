@@ -256,12 +256,8 @@ class _HomePageState extends State<HomePage> {
                       (previousValue, element) =>
                           previousValue + (element.quantity ?? 0),
                     );
-                    return badges.Badge(
-                      badgeContent: Text(
-                        totalQuantity.toString(),
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      child: IconButton(
+                    if (totalQuantity == 0) {
+                      return IconButton(
                         onPressed: () {
                           context.goNamed(
                             RouteConstants.cart,
@@ -269,8 +265,24 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         icon: Assets.icons.cart.svg(height: 24.0),
-                      ),
-                    );
+                      );
+                    } else {
+                      return badges.Badge(
+                        badgeContent: Text(
+                          totalQuantity.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            context.goNamed(
+                              RouteConstants.cart,
+                              pathParameters: PathParameters().toMap(),
+                            );
+                          },
+                          icon: Assets.icons.cart.svg(height: 24.0),
+                        ),
+                      );
+                    }
                   });
             },
           ),
