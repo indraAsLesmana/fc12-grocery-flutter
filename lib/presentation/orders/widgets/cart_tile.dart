@@ -69,11 +69,7 @@ class CartTile extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            data.product
-                                    ?.getPriceAsDouble()
-                                    ?.toInt()
-                                    .currencyFormatRp ??
-                                "",
+                            ("${data.product?.getPriceAsDouble()?.toInt().currencyFormatRp ?? ""} /kg"),
                             style: const TextStyle(
                               color: AppColors.primary,
                               fontSize: 16,
