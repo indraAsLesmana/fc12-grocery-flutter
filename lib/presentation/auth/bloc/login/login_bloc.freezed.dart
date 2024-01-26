@@ -641,10 +641,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? authResponseModel = freezed,
+    Object? authResponseModel = null,
   }) {
     return _then(_$LoadedImpl(
-      freezed == authResponseModel
+      null == authResponseModel
           ? _value.authResponseModel
           : authResponseModel // ignore: cast_nullable_to_non_nullable
               as AuthResponseModel,
@@ -670,13 +670,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other.authResponseModel, authResponseModel));
+            (identical(other.authResponseModel, authResponseModel) ||
+                other.authResponseModel == authResponseModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(authResponseModel));
+  int get hashCode => Object.hash(runtimeType, authResponseModel);
 
   @JsonKey(ignore: true)
   @override

@@ -54,5 +54,23 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         }
       }
     });
+
+    on<_RemoveOrder>((event, emit) {
+      final currentState = state as _Loaded;
+      if (currentState.productQuantity.any((element) =>
+          element.product?.productId ==
+          event.productQuantity.product?.productId)) {
+        final index = currentState.productQuantity.indexWhere((element) =>
+            element.product?.productId ==
+            event.productQuantity.product?.productId);
+
+        // Create a new list from the current state
+        final newList =
+            List<ProductQuantity>.from(currentState.productQuantity);
+        // Remove item from the new list
+        newList.removeAt(index);
+        emit(_Loaded(newList));
+      }
+    });
   }
 }
