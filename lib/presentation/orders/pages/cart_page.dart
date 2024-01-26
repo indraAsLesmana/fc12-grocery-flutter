@@ -97,42 +97,6 @@ class CartPage extends StatelessWidget {
             },
           ),
           const SpaceHeight(50.0),
-          Row(
-            children: [
-              const Text(
-                'Total',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const Spacer(),
-              BlocBuilder<CheckoutBloc, CheckoutState>(
-                builder: (context, state) {
-                  final total = state.maybeWhen(
-                    orElse: () => 0,
-                    loaded: (checkout) {
-                      return checkout.fold<int>(
-                        0,
-                        (previousValue, element) => (previousValue +
-                                ((element.quantity ?? 0) *
-                                    (element.product?.getPriceAsDouble() ?? 0)))
-                            .toInt(),
-                      );
-                    },
-                  );
-                  return Text(
-                    total.currencyFormatRp,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-          const SpaceHeight(40.0),
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               final totalQty = state.maybeWhen(
@@ -145,38 +109,52 @@ class CartPage extends StatelessWidget {
                   );
                 },
               );
-              return Button.filled(
-                // onPressed: () async {
-                //   final isAuth = await AuthLocalDatasource().isAuth();
-                //   if (!isAuth) {
-                //     context.pushNamed(
-                //       RouteConstants.login,
-                //     );
-                //   } else {
-                //     context.goNamed(
-                //       RouteConstants.orderDetail,
-                //       pathParameters: PathParameters(
-                //         rootTab: RootTab.order,
-                //       ).toMap(),
-                //     );
-                //   }
-                // },
-                onPressed: () {
-                  context.goNamed(RouteConstants.login);
+              final total = state.maybeWhen(
+                orElse: () => 0,
+                loaded: (checkout) {
+                  return checkout.fold<int>(
+                    0,
+                    (previousValue, element) => (previousValue +
+                            ((element.quantity ?? 0) *
+                                (element.product?.getPriceAsDouble() ?? 0)))
+                        .toInt(),
+                  );
                 },
-                label: 'Checkout ($totalQty)',
               );
-              // return Button.filled(
-              //   onPressed: () {
-              //     context.goNamed(
-              //       RouteConstants.address,
-              //       pathParameters: PathParameters(
-              //         rootTab: RootTab.order,
-              //       ).toMap(),
-              //     );
-              //   },
-              //   label: 'Checkout (10)',
-              // );
+              return Column(
+                children: [
+                  Row(
+                    children: [
+                      totalQty >= 1
+                          ? const Text(
+                              'Total',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                      const Spacer(),
+                      Text(
+                        total == 0 ? '' : total.currencyFormatRp,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SpaceHeight(40.0),
+                  totalQty >= 1
+                      ? Button.filled(
+                          onPressed: () {
+                            context.goNamed(RouteConstants.login);
+                          },
+                          label: 'Checkout ($totalQty)',
+                        )
+                      : const SizedBox.shrink(),
+                ],
+              );
             },
           ),
         ],
