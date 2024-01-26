@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
 
 import '../../../../core/components/spaces.dart';
-import '../../models/product_model.dart';
 import '../product_card.dart';
 import '../title_content.dart';
 

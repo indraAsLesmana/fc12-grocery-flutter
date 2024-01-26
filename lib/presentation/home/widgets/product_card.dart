@@ -60,7 +60,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  data.price ?? "",
+                  data.getPriceAsDouble()?.toInt().currencyFormatRp ?? "",
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
