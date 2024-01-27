@@ -180,6 +180,35 @@ class _LoginPageState extends State<LoginPage> {
               textAlign: TextAlign.center,
             ),
           ),
+          const SpaceHeight(10.0),
+          InkWell(
+            onTap: () {
+              context.goNamed(
+                RouteConstants.root,
+                pathParameters: PathParameters().toMap(),
+              );
+            },
+            child: const Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Cancel login,',
+                    style: TextStyle(
+                      color: AppColors.primary,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'See all products first',
+                    style: TextStyle(
+                      color: AppColors.grey,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
         ],
       ),
     );

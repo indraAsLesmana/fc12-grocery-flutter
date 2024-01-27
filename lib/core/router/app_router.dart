@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/register_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/pages/cart_page.dart';
+import 'package:flutter_fic12_grocery_app/presentation/orders/pages/order_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/home/pages/dashboard_page.dart';
@@ -74,10 +75,26 @@ class AppRouter {
           //       },
           //     ),
           GoRoute(
-            name: RouteConstants.cart,
-            path: RouteConstants.cartPath,
-            builder: (context, state) => const CartPage(),
-          ),
+              name: RouteConstants.cart,
+              path: RouteConstants.cartPath,
+              builder: (context, state) => const CartPage(),
+              routes: [
+                GoRoute(
+                  name: RouteConstants.orderDetail,
+                  path: RouteConstants.orderDetailPath,
+                  builder: (context, state) => const OrderDetailPage(),
+                ),
+                // GoRoute(
+                //   name: RouteConstants.paymentDetail,
+                //   path: RouteConstants.paymentDetailPath,
+                //   builder: (context, state) => const PaymentDetailPage(),
+                // ),
+                // GoRoute(
+                //   name: RouteConstants.trackingOrder,
+                //   path: RouteConstants.trackingOrderPath,
+                //   builder: (context, state) => const TrackingOrderPage(),
+                // ),
+              ]),
           //     GoRoute(
           //       name: RouteConstants.address,
           //       path: RouteConstants.addressPath,

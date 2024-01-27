@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/components/buttons.dart';
@@ -16,6 +17,20 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _handleCheckout(BuildContext context, int totalQty) async {
+      final isAuth = await AuthLocalDatasource().isAuth();
+      if (!isAuth) {
+        context.goNamed(RouteConstants.login);
+      } else {
+        context.goNamed(
+          RouteConstants.orderDetail,
+          pathParameters: PathParameters(
+            rootTab: RootTab.order,
+          ).toMap(),
+        );
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
@@ -145,9 +160,7 @@ class CartPage extends StatelessWidget {
                   const SpaceHeight(40.0),
                   totalQty >= 1
                       ? Button.filled(
-                          onPressed: () {
-                            context.goNamed(RouteConstants.login);
-                          },
+                          onPressed: () => _handleCheckout(context, totalQty),
                           label: 'Checkout ($totalQty)',
                         )
                       : const SizedBox.shrink(),
