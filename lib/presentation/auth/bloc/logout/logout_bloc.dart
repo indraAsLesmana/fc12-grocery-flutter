@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_remote_datasource.dart';
+import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'logout_event.dart';
@@ -7,7 +7,7 @@ part 'logout_state.dart';
 part 'logout_bloc.freezed.dart';
 
 class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
-  final AuthRemoteDatasource authRemoteDatasource;
+  final AuthApi authRemoteDatasource;
   LogoutBloc(
     this.authRemoteDatasource,
   ) : super(const _Initial()) {

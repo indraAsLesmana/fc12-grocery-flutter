@@ -4,12 +4,20 @@ import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_l
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_response_model.dart';
 import 'package:http/http.dart' as http;
 
-class AuthRemoteDatasource {
+class AuthApi {
   Future<Either<String, AuthResponseModel>> login(
-      String email, String password) async {
+    String email,
+    String password,
+  ) async {
     final response = await http.post(
       Uri.parse('${Variables.baseUrl}/api/login'),
-      body: {'email': email, 'password': password},
+      // headers: <String, String>{
+      //   'Content-Type': 'application/json; charset=UTF-8',
+      // },
+      body: {
+        'email': email,
+        'password': password,
+      },
     );
 
     if (response.statusCode == 200) {

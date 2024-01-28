@@ -23,7 +23,11 @@ class CartPage extends StatelessWidget {
         context.goNamed(RouteConstants.login);
       } else {
         context.goNamed(
-          RouteConstants.orderDetail,
+          // RouteConstants.orderDetail,
+          // pathParameters: PathParameters(
+          //   rootTab: RootTab.order,
+          // ).toMap(),
+          RouteConstants.address,
           pathParameters: PathParameters(
             rootTab: RootTab.order,
           ).toMap(),

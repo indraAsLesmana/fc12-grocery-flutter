@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fic12_grocery_app/presentation/address/models/address_model.dart';
+import 'package:flutter_fic12_grocery_app/presentation/address/pages/add_address_page.dart';
+import 'package:flutter_fic12_grocery_app/presentation/address/pages/address_page.dart';
+import 'package:flutter_fic12_grocery_app/presentation/address/pages/edit_address_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/register_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/pages/cart_page.dart';
@@ -95,24 +99,25 @@ class AppRouter {
                 //   builder: (context, state) => const TrackingOrderPage(),
                 // ),
               ]),
-          //     GoRoute(
-          //       name: RouteConstants.address,
-          //       path: RouteConstants.addressPath,
-          //       builder: (context, state) => const AddressPage(),
-          //       routes: [
-          //         GoRoute(
-          //           name: RouteConstants.addAddress,
-          //           path: RouteConstants.addAddressPath,
-          //           builder: (context, state) => const AddAddressPage(),
-          //         ),
-          //         GoRoute(
-          //           name: RouteConstants.editAddress,
-          //           path: RouteConstants.editAddressPath,
-          //           builder: (context, state) {
-          //             final args = state.extra as AddressModel;
-          //             return EditAddressPage(data: args);
-          //           },
-          //         ),
+          GoRoute(
+              name: RouteConstants.address,
+              path: RouteConstants.addressPath,
+              builder: (context, state) => const AddressPage(),
+              routes: [
+                GoRoute(
+                  name: RouteConstants.addAddress,
+                  path: RouteConstants.addAddressPath,
+                  builder: (context, state) => const AddAddressPage(),
+                ),
+                GoRoute(
+                  name: RouteConstants.editAddress,
+                  path: RouteConstants.editAddressPath,
+                  builder: (context, state) {
+                    final args = state.extra as AddressModel;
+                    return EditAddressPage(data: args);
+                  },
+                )
+              ]),
           //         GoRoute(
           //           name: RouteConstants.orderDetail,
           //           path: RouteConstants.orderDetailPath,
