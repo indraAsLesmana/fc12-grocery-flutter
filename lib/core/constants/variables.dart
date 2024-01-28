@@ -1,5 +1,16 @@
 class Variables {
   static const String baseUrl = 'https://fc12.asianpower.store';
-  static const String rajaOngkirKey = 'bd37330303c418baa242992015824840';
-  static const String rajaOngkirBaseUrl = 'https://api.rajaongkir.com/starter';
+
+  //starter
+  static const String _rajaOngkirStarterBaseUrl =
+      'https://api.rajaongkir.com/starter';
+
+  //pro
+  static const String _rajaOngkirProBaseUrl = 'https://pro.rajaongkir.com/api';
+
+  //configurable
+  static const usingPro = true;
+
+  static String get rajaOngkierBaseUrl =>
+      usingPro ? _rajaOngkirProBaseUrl : _rajaOngkirStarterBaseUrl;
 }
