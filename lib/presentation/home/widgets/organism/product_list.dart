@@ -34,12 +34,14 @@ class ProductList extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 55.0,
+            childAspectRatio:
+                0.9, // Adjust the aspect ratio for dynamic height per item
           ),
           itemCount: items.length,
           itemBuilder: (context, index) => ProductCard(
             data: items[index],
           ),
-        )
+        ),
       ],
     );
   }

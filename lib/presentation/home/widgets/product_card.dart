@@ -49,13 +49,14 @@ class ProductCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                const SpaceHeight(14.0),
+                const SpaceHeight(8.0),
                 Flexible(
                   child: Text(
                     data.name ?? "",
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
+                      overflow: TextOverflow.visible,
                     ),
                   ),
                 ),
@@ -66,7 +67,7 @@ class ProductCard extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary,
                   ),
-                ),
+                )
               ],
             ),
           ),
