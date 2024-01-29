@@ -27,8 +27,10 @@ class _HomePageState extends State<HomePage> {
   late TextEditingController searchController;
 
   final List<String> banners1 = [
-    Assets.images.banner1.path,
-    Assets.images.banner1.path,
+    Assets.images.fruitBanner1.path,
+    Assets.images.fruitBanner2.path,
+    Assets.images.fruitBanner3.path,
+    Assets.images.fruitBanner4.path,
   ];
   final List<String> banners2 = [
     Assets.images.banner2.path,

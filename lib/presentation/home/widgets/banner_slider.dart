@@ -20,24 +20,27 @@ class _BannerSliderState extends State<BannerSlider> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CarouselSlider(
-          items: widget.items
-              .map((e) => Image.asset(
-                    e,
-                    height: 206.0,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fill,
-                  ))
-              .toList(),
-          carouselController: _controller,
-          options: CarouselOptions(
-            autoPlay: true,
-            aspectRatio: 315 / 152,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) {
-              _current = index;
-              setState(() {});
-            },
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: CarouselSlider(
+            items: widget.items
+                .map((e) => Image.asset(
+                      e,
+                      height: 206.0,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.cover,
+                    ))
+                .toList(),
+            carouselController: _controller,
+            options: CarouselOptions(
+              autoPlay: true,
+              aspectRatio: 315 / 152,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                _current = index;
+                setState(() {});
+              },
+            ),
           ),
         ),
         const SpaceHeight(22.0),

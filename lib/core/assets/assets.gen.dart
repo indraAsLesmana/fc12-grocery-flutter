@@ -75,6 +75,22 @@ class $AssetsImagesGen {
   $AssetsImagesCategoriesGen get categories =>
       const $AssetsImagesCategoriesGen();
 
+  /// File path: assets/images/fruit_banner_1.jpg
+  AssetGenImage get fruitBanner1 =>
+      const AssetGenImage('assets/images/fruit_banner_1.jpg');
+
+  /// File path: assets/images/fruit_banner_2.jpg
+  AssetGenImage get fruitBanner2 =>
+      const AssetGenImage('assets/images/fruit_banner_2.jpg');
+
+  /// File path: assets/images/fruit_banner_3.jpg
+  AssetGenImage get fruitBanner3 =>
+      const AssetGenImage('assets/images/fruit_banner_3.jpg');
+
+  /// File path: assets/images/fruit_banner_4.jpg
+  AssetGenImage get fruitBanner4 =>
+      const AssetGenImage('assets/images/fruit_banner_4.jpg');
+
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
@@ -88,8 +104,17 @@ class $AssetsImagesGen {
   $AssetsImagesProductsGen get products => const $AssetsImagesProductsGen();
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [banner1, banner2, google, oops, processOrder];
+  List<AssetGenImage> get values => [
+        banner1,
+        banner2,
+        fruitBanner1,
+        fruitBanner2,
+        fruitBanner3,
+        fruitBanner4,
+        google,
+        oops,
+        processOrder
+      ];
 }
 
 class $AssetsImagesBanksGen {
