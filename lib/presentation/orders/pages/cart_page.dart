@@ -113,7 +113,7 @@ class CartPage extends StatelessWidget {
                   });
             },
           ),
-          const SpaceHeight(50.0),
+          const SpaceHeight(4.0),
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               final totalQty = state.maybeWhen(

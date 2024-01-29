@@ -66,76 +66,86 @@ class CartTile extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 16,
                           ),
-                          overflow: TextOverflow.ellipsis,
+                          overflow: TextOverflow.visible,
                         ),
                         Row(
                           children: [
-                            Text(
-                              ("${data.product?.getPriceAsDouble()?.toInt().currencyFormatRp ?? ""} /kg"),
-                              style: const TextStyle(
-                                color: AppColors.primary,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                            Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: Text(
+                                ("${data.product?.getPriceAsDouble()?.toInt().currencyFormatRp ?? ""} /kg"),
+                                style: const TextStyle(
+                                  color: AppColors.primary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 0,
+                              fit: FlexFit.tight,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(5.0)),
+                                    child: InkWell(
+                                      onTap: () {
+                                        final Product? pr = data.product;
+                                        if (pr == null) return;
+                                        context
+                                            .read<CheckoutBloc>()
+                                            .add(CheckoutEvent.removeItem(pr));
+                                      },
+                                      child: const ColoredBox(
+                                        color: AppColors.primary,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            Icons.remove,
+                                            color: AppColors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SpaceWidth(4.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text('${data.quantity}'),
+                                  ),
+                                  const SpaceWidth(4.0),
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(5.0)),
+                                    child: InkWell(
+                                      onTap: () {
+                                        final Product? pr = data.product;
+                                        if (pr == null) return;
+                                        context
+                                            .read<CheckoutBloc>()
+                                            .add(CheckoutEvent.addItem(pr));
+                                      },
+                                      child: const ColoredBox(
+                                        color: AppColors.primary,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            Icons.add,
+                                            color: AppColors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ],
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                    child: InkWell(
-                      onTap: () {
-                        final Product? pr = data.product;
-                        if (pr == null) return;
-                        context
-                            .read<CheckoutBloc>()
-                            .add(CheckoutEvent.removeItem(pr));
-                      },
-                      child: const ColoredBox(
-                        color: AppColors.primary,
-                        child: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.remove,
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SpaceWidth(4.0),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('${data.quantity}'),
-                  ),
-                  const SpaceWidth(4.0),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                    child: InkWell(
-                      onTap: () {
-                        final Product? pr = data.product;
-                        if (pr == null) return;
-                        context
-                            .read<CheckoutBloc>()
-                            .add(CheckoutEvent.addItem(pr));
-                      },
-                      child: const ColoredBox(
-                        color: AppColors.primary,
-                        child: Padding(
-                          padding: EdgeInsets.all(4.0),
-                          child: Icon(
-                            Icons.add,
-                            color: AppColors.white,
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
