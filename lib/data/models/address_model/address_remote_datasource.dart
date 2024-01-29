@@ -11,7 +11,7 @@ class AddressRemoteDataSource {
     try {
       final authData = await AuthLocalDatasource().getAuthData();
       final response = await http.get(
-        Uri.parse('${Variables.baseUrl}/api/addresses'),
+        Uri.parse('${Variables.baseUrl}/api/address'),
         headers: {
           'Authorization': 'Bearer ${authData!.accessToken}',
           'Accept': 'application/json',
@@ -31,7 +31,7 @@ class AddressRemoteDataSource {
     try {
       final authData = await AuthLocalDatasource().getAuthData();
       final response = await http.post(
-        Uri.parse('${Variables.baseUrl}/api/addresses'),
+        Uri.parse('${Variables.baseUrl}/api/address'),
         headers: {
           'Authorization': 'Bearer ${authData!.accessToken}',
           'Accept': 'application/json',

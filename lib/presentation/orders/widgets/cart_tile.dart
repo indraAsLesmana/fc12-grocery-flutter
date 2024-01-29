@@ -56,29 +56,32 @@ class CartTile extends StatelessWidget {
                     ),
                   ),
                   const SpaceWidth(14.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        data.product?.name ?? "",
-                        style: const TextStyle(
-                          fontSize: 16,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            ("${data.product?.getPriceAsDouble()?.toInt().currencyFormatRp ?? ""} /kg"),
-                            style: const TextStyle(
-                              color: AppColors.primary,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
+                  Flexible(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          data.product?.name ?? "",
+                          style: const TextStyle(
+                            fontSize: 16,
                           ),
-                        ],
-                      ),
-                    ],
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              ("${data.product?.getPriceAsDouble()?.toInt().currencyFormatRp ?? ""} /kg"),
+                              style: const TextStyle(
+                                color: AppColors.primary,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

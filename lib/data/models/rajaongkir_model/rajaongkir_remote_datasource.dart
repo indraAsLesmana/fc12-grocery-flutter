@@ -30,7 +30,7 @@ class RajaongkirRemoteDatasource {
     final response = await http.get(
       url,
       headers: {
-        'key': Variables.rajaOngkirKey,
+        'key': VariablesPrivate.rajaOngkierKey,
       },
     );
     if (response.statusCode == 200) {
@@ -48,7 +48,7 @@ class RajaongkirRemoteDatasource {
     final response = await http.get(
       url,
       headers: {
-        'key': Variables.rajaOngkirKey,
+        'key': VariablesPrivate.rajaOngkierKey,
       },
     );
     if (response.statusCode == 200) {

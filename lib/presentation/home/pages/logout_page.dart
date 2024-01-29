@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/core/components/buttons.dart';
+import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -23,6 +24,7 @@ class _LogoutPageState extends State<LogoutPage> {
           state.maybeWhen(
               orElse: () {},
               loaded: () {
+                AuthLocalDatasource().removeAuthData();
                 context.goNamed(
                   RouteConstants.root,
                   pathParameters: PathParameters().toMap(),
