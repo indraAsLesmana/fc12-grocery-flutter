@@ -18,6 +18,8 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
+  int? selectedIndex;
+
   // final List<AddressModel> addresses = [
   //   AddressModel(
   //     country: 'Indonesia',
@@ -90,11 +92,13 @@ class _AddressPageState extends State<AddressPage> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: addresses.length,
                   itemBuilder: (context, index) => AddressTile(
-                    isSelected: addresses[index].isDefault == 1,
+                    isSelected: selectedIndex != null
+                        ? selectedIndex == index
+                        : addresses[index].isDefault == 1,
                     data: addresses[index],
                     onTap: () {
-                      // selectedIndex = index;
-                      // setState(() {});
+                      selectedIndex = index;
+                      setState(() {});
                     },
                     onEditTap: () {
                       context.goNamed(
