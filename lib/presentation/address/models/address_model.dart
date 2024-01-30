@@ -25,4 +25,19 @@ class AddressModel {
   String get fullAddress =>
       '$address. $city. $province. $country. Zip Code $zipCode';
   String get primaryAddressText => isPrimary ? 'Utama' : 'Opsi';
+
+  // create fromMap
+  factory AddressModel.fromMap(Map<String, dynamic> json) {
+    return AddressModel(
+      country: json['country'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      address: json['address'],
+      city: json['city'],
+      province: json['province'],
+      zipCode: json['zip_code'],
+      phoneNumber: json['phone_number'],
+      isPrimary: json['is_primary'] ?? false,
+    );
+  }
 }

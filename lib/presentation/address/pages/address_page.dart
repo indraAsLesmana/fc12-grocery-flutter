@@ -90,7 +90,7 @@ class _AddressPageState extends State<AddressPage> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: addresses.length,
                   itemBuilder: (context, index) => AddressTile(
-                    isSelected: false,
+                    isSelected: addresses[index].isDefault == 1,
                     data: addresses[index],
                     onTap: () {
                       // selectedIndex = index;
@@ -102,7 +102,7 @@ class _AddressPageState extends State<AddressPage> {
                         pathParameters: PathParameters(
                           rootTab: RootTab.order,
                         ).toMap(),
-                        extra: addresses[index],
+                        extra: addresses[index].toMapAddressModel(),
                       );
                     },
                   ),

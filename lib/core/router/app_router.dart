@@ -113,7 +113,8 @@ class AppRouter {
                   name: RouteConstants.editAddress,
                   path: RouteConstants.editAddressPath,
                   builder: (context, state) {
-                    final args = state.extra as AddressModel;
+                    final args = AddressModel.fromMap(
+                        state.extra as Map<String, dynamic>);
                     return EditAddressPage(data: args);
                   },
                 )

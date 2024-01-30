@@ -95,4 +95,16 @@ class Address {
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
       };
+
+  Map<String, dynamic> toMapAddressModel() => {
+        'country': "Indonesia",
+        'first_name': name,
+        'last_name': "",
+        'address': fullAddress,
+        'city': cityId,
+        'province': provId,
+        'zip_code': int.parse(postalCode ?? "0"),
+        'phone_number': phone,
+        'is_primary': isDefault == 1 ? true : false
+      };
 }
