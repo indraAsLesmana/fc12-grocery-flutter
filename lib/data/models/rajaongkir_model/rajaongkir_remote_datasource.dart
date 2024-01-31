@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class RajaongkirRemoteDatasource {
   Future<Either<String, ProvinceResponseModel>> getProvinces() async {
-    final url = Uri.parse(Variables.rajaOngkierBaseUrl);
+    final url = Uri.parse('${Variables.rajaOngkierBaseUrl}/province');
     final response = await http.get(
       url,
       headers: {

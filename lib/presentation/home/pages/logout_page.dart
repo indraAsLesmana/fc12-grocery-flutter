@@ -37,6 +37,11 @@ class _LogoutPageState extends State<LogoutPage> {
                     content: Text(message),
                   ),
                 );
+                AuthLocalDatasource().removeAuthData();
+                context.goNamed(
+                  RouteConstants.root,
+                  pathParameters: PathParameters().toMap(),
+                );
               });
         },
         builder: (context, state) {

@@ -19,6 +19,10 @@ class AddressRemoteDataSource {
       );
       if (response.statusCode == 200) {
         return Right(AddressResponseModel.fromJson(response.body));
+      } else if (response.statusCode == 401) {
+        // unauthorized
+        AuthLocalDatasource().removeAuthData();
+        return const Left('Unauthorized');
       } else {
         return const Left('Error');
       }
@@ -39,7 +43,7 @@ class AddressRemoteDataSource {
         },
         body: data.toJson(),
       );
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return const Right('Success');
       } else {
         return const Left('Error');
