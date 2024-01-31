@@ -18,35 +18,17 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
   int? selectedIndex;
-
-  // final List<AddressModel> addresses = [
-  //   AddressModel(
-  //     country: 'Indonesia',
-  //     firstName: 'Saiful',
-  //     lastName: 'Bahri',
-  //     address: 'Jl. Merdeka No. 123',
-  //     city: 'Jakarta Selatan',
-  //     province: 'DKI Jakarta',
-  //     zipCode: 12345,
-  //     phoneNumber: '08123456789',
-  //     isPrimary: true,
-  //   ),
-  //   AddressModel(
-  //     country: 'Indonesia',
-  //     firstName: 'Saiful',
-  //     lastName: '',
-  //     address: 'Jl. Cendrawasih No. 456',
-  //     city: 'Bandung',
-  //     province: 'Jawa Barat',
-  //     zipCode: 67890,
-  //     phoneNumber: '08987654321',
-  //   ),
-  // ];
 
   @override
   void initState() {
     super.initState();
+    context.read<AddressBloc>().add(const AddressEvent.getAddresses());
+  }
+
+  Future<void> _refreshAddresses() async {
     context.read<AddressBloc>().add(const AddressEvent.getAddresses());
   }
 
@@ -70,65 +52,73 @@ class _AddressPageState extends State<AddressPage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(20.0),
-        children: [
-          const Text(
-            'Pilih atau tambahkan alamat pengiriman',
-            style: TextStyle(
-              fontSize: 16,
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: _refreshAddresses,
+        child: ListView(
+          padding: const EdgeInsets.all(20.0),
+          children: [
+            const Text(
+              'Pilih atau tambahkan alamat pengiriman',
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
-          ),
-          const SpaceHeight(20.0),
-          BlocBuilder<AddressBloc, AddressState>(
-            builder: (context, state) {
-              return state.maybeWhen(orElse: () {
-                return const Center(
-                  child: CircularProgressIndicator(),
+            const SpaceHeight(20.0),
+            BlocBuilder<AddressBloc, AddressState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  loaded: (addresses) {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: addresses.length,
+                      itemBuilder: (context, index) => AddressTile(
+                        isSelected: selectedIndex != null
+                            ? selectedIndex == index
+                            : addresses[index].isDefault == 1,
+                        data: addresses[index],
+                        onTap: () {
+                          selectedIndex = index;
+                          setState(() {});
+                        },
+                        onEditTap: () {
+                          context.goNamed(
+                            RouteConstants.editAddress,
+                            pathParameters: PathParameters(
+                              rootTab: RootTab.order,
+                            ).toMap(),
+                            extra: addresses[index].toMapAddressModel(),
+                          );
+                        },
+                      ),
+                      separatorBuilder: (context, index) =>
+                          const SpaceHeight(16.0),
+                    );
+                  },
                 );
-              }, loaded: (addresses) {
-                return ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: addresses.length,
-                  itemBuilder: (context, index) => AddressTile(
-                    isSelected: selectedIndex != null
-                        ? selectedIndex == index
-                        : addresses[index].isDefault == 1,
-                    data: addresses[index],
-                    onTap: () {
-                      selectedIndex = index;
-                      setState(() {});
-                    },
-                    onEditTap: () {
-                      context.goNamed(
-                        RouteConstants.editAddress,
-                        pathParameters: PathParameters(
-                          rootTab: RootTab.order,
-                        ).toMap(),
-                        extra: addresses[index].toMapAddressModel(),
-                      );
-                    },
-                  ),
-                  separatorBuilder: (context, index) => const SpaceHeight(16.0),
+              },
+            ),
+            const SpaceHeight(40.0),
+            Button.outlined(
+              onPressed: () {
+                context.goNamed(
+                  RouteConstants.addAddress,
+                  pathParameters: PathParameters(
+                    rootTab: RootTab.order,
+                  ).toMap(),
                 );
-              });
-            },
-          ),
-          const SpaceHeight(40.0),
-          Button.outlined(
-            onPressed: () {
-              context.goNamed(
-                RouteConstants.addAddress,
-                pathParameters: PathParameters(
-                  rootTab: RootTab.order,
-                ).toMap(),
-              );
-            },
-            label: 'Add address',
-          ),
-          const SpaceHeight(50.0),
-        ],
+              },
+              label: 'Add address',
+            ),
+            const SpaceHeight(50.0),
+          ],
+        ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20.0),
