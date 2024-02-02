@@ -23,9 +23,11 @@ class CartTile extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: (context) {
-                context
-                    .read<CheckoutBloc>()
-                    .add(CheckoutEvent.removeOrder(data));
+                if (data.product != null) {
+                  context
+                      .read<CheckoutBloc>()
+                      .add(CheckoutEvent.removeItem(data.product!));
+                }
               },
               backgroundColor: AppColors.primary.withOpacity(0.44),
               foregroundColor: AppColors.red,

@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
               return state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  loaded: (cart) {
+                  loaded: (cart, _, __, ___, ____, _____) {
                     final totalQuantity = cart.fold<int>(
                       0,
                       (previousValue, element) =>

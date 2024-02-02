@@ -4,6 +4,7 @@ import 'package:flutter_fic12_grocery_app/core/constants/variables_private.dart'
 import 'package:flutter_fic12_grocery_app/data/models/location_model/city_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/location_model/province_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/location_model/subdistrict_response_model.dart';
+import 'package:flutter_fic12_grocery_app/data/models/order_model/cost_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class RajaongkirRemoteDatasource {
@@ -53,6 +54,30 @@ class RajaongkirRemoteDatasource {
     );
     if (response.statusCode == 200) {
       return right(SubdistrictResponseModel.fromJson(response.body));
+    } else {
+      return left('Error');
+    }
+  }
+
+  Future<Either<String, CostResponseModel>> getCost(
+      String origin, String destination, String courier) async {
+    final url = Uri.parse('https://pro.rajaongkir.com/api/cost');
+    final response = await http.post(
+      url,
+      headers: {
+        'key': VariablesPrivate.rajaOngkierKey,
+      },
+      body: {
+        'origin': origin,
+        'originType': 'subdistrict',
+        'destination': destination,
+        'destinationType': 'subdistrict',
+        'weight': '1000',
+        'courier': courier,
+      },
+    );
+    if (response.statusCode == 200) {
+      return right(CostResponseModel.fromJson(response.body));
     } else {
       return left('Error');
     }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/category_response_model/category_api.dart';
+import 'package:flutter_fic12_grocery_app/data/models/order_model/order_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/rajaongkir_model/rajaongkir_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/add_address/add_address_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/address/address_bloc.dart';
@@ -13,6 +14,8 @@ import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/login/login_blo
 import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/category/category_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
+import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
+import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
 
 import 'core/router/app_router.dart';
 
@@ -55,6 +58,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SubdistrictBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => CostBloc(RajaongkirRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => OrderBloc(OrderApi()),
         ),
       ],
       child: MaterialApp.router(
