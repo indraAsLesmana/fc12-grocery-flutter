@@ -107,6 +107,28 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           event.shippingCost,
           currentState.paymentMethod));
     });
+
+    on<_RemoveOrder>((event, emit) {
+      final currentState = state as _Loaded;
+      if (currentState.products.any(
+          (element) => element.product?.productId == event.product.productId)) {
+        final index = currentState.products.indexWhere(
+            (element) => element.product?.productId == event.product.productId);
+
+        // Create a new list from the current state
+        final newList = List<ProductQuantity>.from(currentState.products);
+        // Remove item from the new list
+        newList.removeAt(index);
+        emit(_Loaded(
+          newList,
+          currentState.addressId,
+          currentState.paymentMethod,
+          currentState.shippingService,
+          currentState.shippingCost,
+          currentState.shippingService,
+        ));
+      }
+    });
   }
 }
 

@@ -26,7 +26,7 @@ class CartTile extends StatelessWidget {
                 if (data.product != null) {
                   context
                       .read<CheckoutBloc>()
-                      .add(CheckoutEvent.removeItem(data.product!));
+                      .add(CheckoutEvent.removeOrder(data.product!));
                 }
               },
               backgroundColor: AppColors.primary.withOpacity(0.44),

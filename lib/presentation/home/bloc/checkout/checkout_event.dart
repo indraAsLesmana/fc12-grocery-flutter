@@ -19,4 +19,6 @@ class CheckoutEvent with _$CheckoutEvent {
   //add shipping service
   const factory CheckoutEvent.addShippingService(
       String shippingService, int shippingCost) = _AddShippingService;
+
+  const factory CheckoutEvent.removeOrder(Product product) = _RemoveOrder;
 }
