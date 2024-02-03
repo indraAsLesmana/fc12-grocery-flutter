@@ -145,7 +145,7 @@ class _PaymentWaitingPageState extends State<PaymentWaitingPage> {
                         banks
                             .where((element) =>
                                 element.code ==
-                                orderResponseModel.order!.paymentVaName!)
+                                orderResponseModel["order"]["payment_va_name"])
                             .first
                             .name,
                         style: const TextStyle(
@@ -156,7 +156,7 @@ class _PaymentWaitingPageState extends State<PaymentWaitingPage> {
                       Image.asset(banks
                           .where((element) =>
                               element.code ==
-                              orderResponseModel.order!.paymentVaName!)
+                              orderResponseModel["order"]["payment_va_name"])
                           .first
                           .image),
                     ],
@@ -189,7 +189,7 @@ class _PaymentWaitingPageState extends State<PaymentWaitingPage> {
                         },
                         loaded: (orderResponseModel) {
                           return Text(
-                            orderResponseModel.order!.paymentVaNumber!,
+                            orderResponseModel["order"]["payment_va_number"],
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,

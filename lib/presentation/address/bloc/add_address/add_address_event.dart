@@ -4,6 +4,6 @@ part of 'add_address_bloc.dart';
 class AddAddressEvent with _$AddAddressEvent {
   const factory AddAddressEvent.started() = _Started;
   const factory AddAddressEvent.addAddress({
-   required AddressRequestModel addressRequestModel,
+    required AddressRequestModel addressRequestModel,
   }) = _AddAddress;
 }

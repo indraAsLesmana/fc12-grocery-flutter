@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-
 import '../../../core/components/spaces.dart';
 import '../../../core/core.dart';
 

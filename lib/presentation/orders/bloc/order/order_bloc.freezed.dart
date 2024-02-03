@@ -462,7 +462,7 @@ mixin _$OrderState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel orderResponseModel) loaded,
+    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -470,7 +470,7 @@ mixin _$OrderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -478,7 +478,7 @@ mixin _$OrderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -568,7 +568,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel orderResponseModel) loaded,
+    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -579,7 +579,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -590,7 +590,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -682,7 +682,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel orderResponseModel) loaded,
+    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -693,7 +693,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -704,7 +704,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -762,7 +762,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrderResponseModel orderResponseModel});
+  $Res call({Map<String, dynamic> orderResponseModel});
 }
 
 /// @nodoc
@@ -780,9 +780,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadedImpl(
       null == orderResponseModel
-          ? _value.orderResponseModel
+          ? _value._orderResponseModel
           : orderResponseModel // ignore: cast_nullable_to_non_nullable
-              as OrderResponseModel,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -790,10 +790,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.orderResponseModel);
+  const _$LoadedImpl(final Map<String, dynamic> orderResponseModel)
+      : _orderResponseModel = orderResponseModel;
 
+  final Map<String, dynamic> _orderResponseModel;
   @override
-  final OrderResponseModel orderResponseModel;
+  Map<String, dynamic> get orderResponseModel {
+    if (_orderResponseModel is EqualUnmodifiableMapView)
+      return _orderResponseModel;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_orderResponseModel);
+  }
 
   @override
   String toString() {
@@ -805,12 +812,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.orderResponseModel, orderResponseModel) ||
-                other.orderResponseModel == orderResponseModel));
+            const DeepCollectionEquality()
+                .equals(other._orderResponseModel, _orderResponseModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderResponseModel);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_orderResponseModel));
 
   @JsonKey(ignore: true)
   @override
@@ -823,7 +831,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel orderResponseModel) loaded,
+    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(orderResponseModel);
@@ -834,7 +842,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(orderResponseModel);
@@ -845,7 +853,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -894,10 +902,10 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements OrderState {
-  const factory _Loaded(final OrderResponseModel orderResponseModel) =
+  const factory _Loaded(final Map<String, dynamic> orderResponseModel) =
       _$LoadedImpl;
 
-  OrderResponseModel get orderResponseModel;
+  Map<String, dynamic> get orderResponseModel;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -969,7 +977,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(OrderResponseModel orderResponseModel) loaded,
+    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -980,7 +988,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -991,7 +999,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(OrderResponseModel orderResponseModel)? loaded,
+    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

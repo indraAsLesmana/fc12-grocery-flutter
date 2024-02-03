@@ -132,7 +132,6 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   }
 }
 
-
 // class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
 //   CheckoutBloc() : super(const _Loaded([])) {
 //     on<_AddItem>((event, emit) {

@@ -9,5 +9,4 @@ class CostEvent with _$CostEvent {
     required int weight,
     required String courier,
   }) = _GetCost;
-
 }
