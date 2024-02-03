@@ -26,6 +26,8 @@ class OrderRequestModel {
 
   String toJson() => json.encode(toMap());
 
+  String toJsonRequest() => json.encode(toMapRequest());
+
   factory OrderRequestModel.fromMap(Map<String, dynamic> json) =>
       OrderRequestModel(
         addressId: json["address_id"],
@@ -48,6 +50,17 @@ class OrderRequestModel {
         "payment_va_name": paymentVaName,
         "subtotal": subtotal,
         "total_cost": totalCost,
+        "items": items == null
+            ? []
+            : List<dynamic>.from(items!.map((x) => x.toMap())),
+      };
+
+  Map<String, dynamic> toMapRequest() => {
+        "address_id": addressId?.toInt() ?? 0,
+        "payment_method": paymentMethod,
+        "shipping_service": shippingService,
+        "shipping_cost": shippingCost,
+        "payment_va_name": paymentVaName,
         "items": items == null
             ? []
             : List<dynamic>.from(items!.map((x) => x.toMap())),

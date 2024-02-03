@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/components/buttons.dart';
@@ -74,31 +75,40 @@ class _AddressPageState extends State<AddressPage> {
                     );
                   },
                   loaded: (addresses) {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: addresses.length,
-                      itemBuilder: (context, index) => AddressTile(
-                        isSelected: selectedIndex != null
-                            ? selectedIndex == index
-                            : addresses[index].isDefault == 1,
-                        data: addresses[index],
-                        onTap: () {
-                          selectedIndex = index;
-                          setState(() {});
-                        },
-                        onEditTap: () {
-                          context.goNamed(
-                            RouteConstants.editAddress,
-                            pathParameters: PathParameters(
-                              rootTab: RootTab.order,
-                            ).toMap(),
-                            extra: addresses[index].toMapAddressModel(),
-                          );
-                        },
-                      ),
-                      separatorBuilder: (context, index) =>
-                          const SpaceHeight(16.0),
+                    return BlocBuilder<CheckoutBloc, CheckoutState>(
+                      builder: (context, state) {
+                        return ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: addresses.length,
+                          itemBuilder: (context, index) => AddressTile(
+                            isSelected: selectedIndex != null
+                                ? selectedIndex == index
+                                : addresses[index].isDefault == 1,
+                            data: addresses[index],
+                            onTap: () {
+                              context.read<CheckoutBloc>().add(
+                                    CheckoutEvent.addAddressId(
+                                        addresses[index].id!),
+                                  );
+
+                              selectedIndex = index;
+                              setState(() {});
+                            },
+                            onEditTap: () {
+                              context.goNamed(
+                                RouteConstants.editAddress,
+                                pathParameters: PathParameters(
+                                  rootTab: RootTab.order,
+                                ).toMap(),
+                                extra: addresses[index].toMapAddressModel(),
+                              );
+                            },
+                          ),
+                          separatorBuilder: (context, index) =>
+                              const SpaceHeight(16.0),
+                        );
+                      },
                     );
                   },
                 );

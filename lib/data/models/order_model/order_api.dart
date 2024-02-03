@@ -19,7 +19,7 @@ class OrderApi {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ${authData!.accessToken}'
           },
-          body: orderRequestModel.toJson(),
+          body: orderRequestModel.toJsonRequest(),
         )
         .interceptWithChuck(ChuckInterceptor().intercept);
 
