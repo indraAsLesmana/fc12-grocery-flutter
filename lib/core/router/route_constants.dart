@@ -56,4 +56,8 @@ class RouteConstants {
   /// route for page [ShippingDetailPage]
   static const String shippingDetail = 'shipping_detail';
   static const String shippingDetailPath = 'shipping_detail';
+
+  /// route for page [PaymentWaitingPage]
+  static const String paymentWaiting = 'payment_waiting';
+  static const String paymentWaitingPath = 'payment_waiting';
 }

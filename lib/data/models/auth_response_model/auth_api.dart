@@ -1,4 +1,6 @@
+import 'package:chuck_interceptor/core/chuck_http_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_response_model.dart';
@@ -18,7 +20,7 @@ class AuthApi {
         'email': email,
         'password': password,
       },
-    );
+    ).interceptWithChuck(ChuckInterceptor().intercept);
 
     if (response.statusCode == 200) {
       return Right(AuthResponseModel.fromJson(response.body));

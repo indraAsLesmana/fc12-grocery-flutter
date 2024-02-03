@@ -55,7 +55,7 @@ class OrderRequestModel {
 }
 
 class Item {
-  final int? productId;
+  final String? productId;
   final int? quantity;
 
   Item({

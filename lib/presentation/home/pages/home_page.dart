@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
@@ -24,6 +25,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
   late TextEditingController searchController;
 
   final List<String> banners1 = [
@@ -47,6 +50,11 @@ class _HomePageState extends State<HomePage> {
     featureProductBloc.add(const AllProductEvent.getProducts());
     spesialProductBloc.add(const AllProductEvent.getProductsBestSeller());
     super.initState();
+  }
+
+  Future<void> _refreshHomepage() async {
+    featureProductBloc.add(const AllProductEvent.getProducts());
+    spesialProductBloc.add(const AllProductEvent.getProductsBestSeller());
   }
 
   @override
@@ -108,85 +116,89 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(width: 16.0),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
-        children: [
-          SearchInput(
-            controller: searchController,
-            onTap: () {
-              context.pushReplacementNamed(
-                RouteConstants.root,
-                pathParameters: PathParameters(
-                  rootTab: RootTab.explore,
-                ).toMap(),
-              );
-            },
-          ),
-          const SpaceHeight(16.0),
-          BannerSlider(items: banners1),
-          const SpaceHeight(12.0),
-          TitleContent(
-            title: 'Categories',
-            onSeeAllTap: () {},
-          ),
-          const SpaceHeight(12.0),
-          // SizedBox(
-          //   child: Shimmer.fromColors(
-          //     baseColor: Colors.grey.shade300,
-          //     highlightColor: Colors.grey.shade100,
-          //     child: const MenuCategories(),
-          //   ),
-          // ),
-          const MenuCategories(),
-          const SpaceHeight(28.0),
-          BlocBuilder<AllProductBloc, AllProductState>(
-            bloc: featureProductBloc,
-            builder: (context, state) {
-              return state.maybeWhen(
-                loaded: (products) {
-                  return ProductList(
-                    title: 'Featured Product',
-                    onSeeAllTap: () {},
-                    items: products,
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) {
-                  return Center(
-                    child: Text(message),
-                  );
-                },
-              );
-            },
-          ),
-          const SpaceHeight(28.0),
-          BlocBuilder<AllProductBloc, AllProductState>(
-            bloc: spesialProductBloc,
-            builder: (context, state) {
-              return state.maybeWhen(
-                loadedBestSeller: (products) {
-                  return ProductList(
-                    title: 'Special offers',
-                    onSeeAllTap: () {},
-                    items: products,
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (message) {
-                  return Center(
-                    child: Text(message),
-                  );
-                },
-              );
-            },
-          ),
-        ],
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: _refreshHomepage,
+        child: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: [
+            SearchInput(
+              controller: searchController,
+              onTap: () {
+                context.pushReplacementNamed(
+                  RouteConstants.root,
+                  pathParameters: PathParameters(
+                    rootTab: RootTab.explore,
+                  ).toMap(),
+                );
+              },
+            ),
+            const SpaceHeight(16.0),
+            BannerSlider(items: banners1),
+            const SpaceHeight(12.0),
+            TitleContent(
+              title: 'Categories',
+              onSeeAllTap: () {},
+            ),
+            const SpaceHeight(12.0),
+            // SizedBox(
+            //   child: Shimmer.fromColors(
+            //     baseColor: Colors.grey.shade300,
+            //     highlightColor: Colors.grey.shade100,
+            //     child: const MenuCategories(),
+            //   ),
+            // ),
+            const MenuCategories(),
+            const SpaceHeight(28.0),
+            BlocBuilder<AllProductBloc, AllProductState>(
+              bloc: featureProductBloc,
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loaded: (products) {
+                    return ProductList(
+                      title: 'Featured Product',
+                      onSeeAllTap: () {},
+                      items: products,
+                    );
+                  },
+                  orElse: () => const SizedBox.shrink(),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  error: (message) {
+                    return Center(
+                      child: Text(message),
+                    );
+                  },
+                );
+              },
+            ),
+            const SpaceHeight(28.0),
+            BlocBuilder<AllProductBloc, AllProductState>(
+              bloc: spesialProductBloc,
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loadedBestSeller: (products) {
+                    return ProductList(
+                      title: 'Special offers',
+                      onSeeAllTap: () {},
+                      items: products,
+                    );
+                  },
+                  orElse: () => const SizedBox.shrink(),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  error: (message) {
+                    return Center(
+                      child: Text(message),
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -8,7 +8,7 @@ class Variables {
 
   //configurable
   static const usingPro = true;
-  static const _envConfig = Environment.localFly;
+  static const _envConfig = Environment.local;
 
   static String get rajaOngkierBaseUrl =>
       usingPro ? _rajaOngkirProBaseUrl : _rajaOngkirStarterBaseUrl;
@@ -16,7 +16,7 @@ class Variables {
   static String get baseUrl {
     switch (_envConfig) {
       case Environment.local:
-        return 'http://localhost:8000';
+        return 'http://127.0.0.1:8000';
       case Environment.staging:
         return "https://fc12.asianpower.store";
       case Environment.localFly:

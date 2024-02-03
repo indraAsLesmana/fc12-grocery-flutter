@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/category/category_product_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -34,7 +35,9 @@ class _MenuCategoriesState extends State<MenuCategories> {
                   child: CategoryButton(
                     imagePath: category.image!,
                     label: category.name!,
-                    onPressed: () {},
+                    onPressed: () {
+                      ChuckInterceptor().intercept.showInspector();
+                    },
                   ),
                 ),
               ),

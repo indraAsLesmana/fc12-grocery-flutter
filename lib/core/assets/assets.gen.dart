@@ -20,6 +20,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/clock.svg
   SvgGenImage get clock => const SvgGenImage('assets/icons/clock.svg');
 
+  /// File path: assets/icons/copy.svg
+  SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+
   /// File path: assets/icons/email.svg
   SvgGenImage get email => const SvgGenImage('assets/icons/email.svg');
 
@@ -50,6 +53,7 @@ class $AssetsIconsGen {
   List<SvgGenImage> get values => [
         cart,
         clock,
+        copy,
         email,
         home,
         notification,
