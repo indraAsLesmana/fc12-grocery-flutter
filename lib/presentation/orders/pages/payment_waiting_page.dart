@@ -168,56 +168,60 @@ class _PaymentWaitingPageState extends State<PaymentWaitingPage> {
           const SpaceHeight(14.0),
           const Divider(),
           const SpaceHeight(14.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          BlocBuilder<OrderBloc, OrderState>(
+            builder: (context, state) {
+              final response = state.maybeWhen(
+                orElse: () {
+                  return null;
+                },
+                loaded: (orderResponseModel) {
+                  return orderResponseModel;
+                },
+              );
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'No Virtual Account',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'No Virtual Account',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        response?["order"]["payment_va_number"],
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
                   ),
-                  BlocBuilder<OrderBloc, OrderState>(
-                    builder: (context, state) {
-                      return state.maybeWhen(
-                        orElse: () {
-                          return const SizedBox();
-                        },
-                        loaded: (orderResponseModel) {
-                          return Text(
-                            orderResponseModel["order"]["payment_va_number"],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          );
-                        },
-                      );
+                  Button.outlined(
+                    textColor: AppColors.primary,
+                    width: 125.0,
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(
+                              text:
+                                  "${response?['order']['payment_va_number'] ?? ""}"))
+                          .then((_) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Copied to clipboard'),
+                          duration: Duration(seconds: 1),
+                          backgroundColor: AppColors.primary,
+                        ));
+                      });
                     },
+                    label: 'Copy',
+                    icon: Assets.icons.copy.svg(),
                   ),
                 ],
-              ),
-              Button.outlined(
-                textColor: AppColors.primary,
-                width: 125.0,
-                onPressed: () {
-                  Clipboard.setData(const ClipboardData(text: 'test dong'))
-                      .then((_) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Copied to clipboard'),
-                      duration: Duration(seconds: 1),
-                      backgroundColor: AppColors.primary,
-                    ));
-                  });
-                },
-                label: 'Copy',
-                icon: Assets.icons.copy.svg(),
-              ),
-            ],
+              );
+            },
           ),
           const SpaceHeight(14.0),
           const ListTile(
