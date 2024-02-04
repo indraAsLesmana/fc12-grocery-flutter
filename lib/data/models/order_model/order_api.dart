@@ -6,7 +6,6 @@ import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
 import 'package:flutter_fic12_grocery_app/data/models/order_model/order_request_model.dart';
-import 'package:flutter_fic12_grocery_app/data/models/order_model/order_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class OrderApi {

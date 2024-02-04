@@ -18,7 +18,7 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
     });
 
     on<_GetProductsBestSeller>((event, emit) async {
-      await _fetchProducts('Fruits', emit);
+      await _fetchProducts('Leafy', emit);
     });
   }
 

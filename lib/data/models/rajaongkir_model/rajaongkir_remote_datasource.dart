@@ -1,4 +1,6 @@
+import 'package:chuck_interceptor/core/chuck_http_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
 import 'package:flutter_fic12_grocery_app/core/constants/variables_private.dart';
 import 'package:flutter_fic12_grocery_app/data/models/location_model/city_response_model.dart';
@@ -15,7 +17,8 @@ class RajaongkirRemoteDatasource {
       headers: {
         'key': VariablesPrivate.rajaOngkierKey,
       },
-    );
+    ).interceptWithChuck(ChuckInterceptor().intercept);
+
     if (response.statusCode == 200) {
       return right(ProvinceResponseModel.fromJson(response.body));
     } else {
@@ -33,7 +36,7 @@ class RajaongkirRemoteDatasource {
       headers: {
         'key': VariablesPrivate.rajaOngkierKey,
       },
-    );
+    ).interceptWithChuck(ChuckInterceptor().intercept);
     if (response.statusCode == 200) {
       return right(CityResponseModel.fromJson(response.body));
     } else {
@@ -51,7 +54,7 @@ class RajaongkirRemoteDatasource {
       headers: {
         'key': VariablesPrivate.rajaOngkierKey,
       },
-    );
+    ).interceptWithChuck(ChuckInterceptor().intercept);
     if (response.statusCode == 200) {
       return right(SubdistrictResponseModel.fromJson(response.body));
     } else {
@@ -75,7 +78,7 @@ class RajaongkirRemoteDatasource {
         'weight': '1000',
         'courier': courier,
       },
-    );
+    ).interceptWithChuck(ChuckInterceptor().intercept);
     if (response.statusCode == 200) {
       return right(CostResponseModel.fromJson(response.body));
     } else {

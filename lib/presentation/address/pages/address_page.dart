@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +22,9 @@ class AddressPage extends StatefulWidget {
 class _AddressPageState extends State<AddressPage> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
+
   int? selectedIndex;
+  Address? selectedAddress;
 
   @override
   void initState() {
@@ -93,6 +96,8 @@ class _AddressPageState extends State<AddressPage> {
                                   );
 
                               selectedIndex = index;
+                              selectedAddress = addresses[index];
+
                               setState(() {});
                             },
                             onEditTap: () {
