@@ -13,8 +13,6 @@ import '../../../core/components/buttons.dart';
 import '../../../core/components/spaces.dart';
 import '../../../core/router/app_router.dart';
 import '../../home/bloc/checkout/checkout_bloc.dart';
-import '../../home/models/product_model.dart';
-import '../../home/models/store_model.dart';
 
 class OrderDetailPage extends StatefulWidget {
   final Address selectedAddress;
@@ -27,6 +25,8 @@ class OrderDetailPage extends StatefulWidget {
 class _OrderDetailPageState extends State<OrderDetailPage> {
   @override
   void initState() {
+    // context.read<CheckoutBloc>().add(CheckoutEvent);
+
     context.read<CostBloc>().add(CostEvent.getCost(
           origin: '2102', // merchant location, hardcode to Tanah Abang
           destination: widget.selectedAddress.districtId ?? "2103",

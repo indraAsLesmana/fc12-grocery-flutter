@@ -160,12 +160,11 @@ class _AddressPageState extends State<AddressPage> {
             const SpaceHeight(12.0),
             Button.filled(
               onPressed: () {
-                context.goNamed(
-                  RouteConstants.orderDetail,
-                  pathParameters: PathParameters(
-                    rootTab: RootTab.order,
-                  ).toMap(),
-                );
+                context.goNamed(RouteConstants.orderDetail,
+                    pathParameters: PathParameters(
+                      rootTab: RootTab.order,
+                    ).toMap(),
+                    extra: selectedAddress);
               },
               label: 'Lanjutkan',
             ),
