@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/core/core.dart';
 import 'package:flutter_fic12_grocery_app/core/extensions/double_ext%20copy.dart';
+import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/widgets/cart_tile.dart';
 
@@ -16,7 +17,8 @@ import '../../home/models/product_model.dart';
 import '../../home/models/store_model.dart';
 
 class OrderDetailPage extends StatefulWidget {
-  const OrderDetailPage({super.key});
+  final Address selectedAddress;
+  const OrderDetailPage({super.key, required this.selectedAddress});
 
   @override
   State<OrderDetailPage> createState() => _OrderDetailPageState();
@@ -26,9 +28,9 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   @override
   void initState() {
     context.read<CostBloc>().add(CostEvent.getCost(
-          origin: '5779',
-          destination: '2103',
-          weight: 1000,
+          origin: '2102', // merchant location, hardcode to Tanah Abang
+          destination: widget.selectedAddress.districtId ?? "2103",
+          weight: 1000, // quantity * 1000
           courier: 'jne',
         ));
     super.initState();

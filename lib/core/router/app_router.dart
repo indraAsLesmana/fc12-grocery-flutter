@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
+import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/models/address_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/pages/add_address_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/pages/address_page.dart';
@@ -14,23 +15,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../presentation/home/pages/dashboard_page.dart';
 import '../../presentation/intro/splash_page.dart';
-
-// import '../../../ui/address/models/address_model.dart';
-// import '../../../ui/address/pages/add_address_page.dart';
-// import '../../../ui/address/pages/address_page.dart';
-// import '../../../ui/address/pages/edit_address_page.dart';
-// import '../../../ui/auth/pages/login_page.dart';
-// import '../../../ui/auth/pages/register_page.dart';
-// import '../../../ui/auth/pages/verification_page.dart';
-// import '../../../ui/home/models/product_model.dart';
-// import '../../../ui/home/pages/product_detail_page.dart';
-// import '../../../ui/home/pages/root_page.dart';
-// import '../../../ui/intro/splash_page.dart';
-// import '../../../ui/orders/pages/cart_page.dart';
-// import '../../../ui/orders/pages/order_detail_page.dart';
-// import '../../../ui/orders/pages/payment_detail_page.dart';
-// import '../../../ui/orders/pages/shipping_detail_page.dart';
-// import '../../../ui/orders/pages/tracking_order_page.dart';
 
 part 'route_constants.dart';
 part 'enums/root_tab.dart';
@@ -99,7 +83,8 @@ class AppRouter {
                       name: RouteConstants.orderDetail,
                       parentNavigatorKey: _navigatorKey,
                       path: RouteConstants.orderDetailPath,
-                      builder: (context, state) => const OrderDetailPage(),
+                      builder: (context, state) => OrderDetailPage(
+                          selectedAddress: (state.extra as Address)),
                       routes: [
                         GoRoute(
                           name: RouteConstants.paymentDetail,
