@@ -17,16 +17,13 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _handleCheckout(BuildContext context, int totalQty) async {
+    final currentContext = context.mounted ? context : null;
+    void handleCheckout(BuildContext context, int totalQty) async {
       final isAuth = await AuthLocalDatasource().isAuth();
       if (!isAuth) {
-        context.goNamed(RouteConstants.login);
+        currentContext?.goNamed(RouteConstants.login);
       } else {
-        context.goNamed(
-          // RouteConstants.orderDetail,
-          // pathParameters: PathParameters(
-          //   rootTab: RootTab.order,
-          // ).toMap(),
+        currentContext?.goNamed(
           RouteConstants.address,
           pathParameters: PathParameters(
             rootTab: RootTab.order,
@@ -164,7 +161,7 @@ class CartPage extends StatelessWidget {
                   const SpaceHeight(40.0),
                   totalQty >= 1
                       ? Button.filled(
-                          onPressed: () => _handleCheckout(context, totalQty),
+                          onPressed: () => handleCheckout(context, totalQty),
                           label: 'Checkout ($totalQty)',
                         )
                       : const SizedBox.shrink(),
