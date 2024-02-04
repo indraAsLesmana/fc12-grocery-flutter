@@ -418,20 +418,30 @@ class PaymentDetailPage extends StatelessWidget {
                     },
                   );
                 },
-                child: Button.filled(
-                  disabled: paymentMethod == '',
-                  onPressed: () {
-                    // need to check addressId
-                    // need unsured send product_id on list item
-                    context.read<OrderBloc>().add(OrderEvent.doOrder(
-                        addressId: addressId,
-                        paymentMethod: paymentMethod,
-                        shippingService: shippingService,
-                        shippingCost: shippingCost,
-                        paymentVaName: paymentVaName,
-                        products: products as List<ProductQuantity>));
+                child: BlocBuilder<OrderBloc, OrderState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      loading: () => const SizedBox(
+                          height: 48,
+                          width: 48,
+                          child: CircularProgressIndicator()),
+                      orElse: () => Button.filled(
+                        disabled: paymentMethod == '',
+                        onPressed: () {
+                          // need to check addressId
+                          // need unsured send product_id on list item
+                          context.read<OrderBloc>().add(OrderEvent.doOrder(
+                              addressId: addressId,
+                              paymentMethod: paymentMethod,
+                              shippingService: shippingService,
+                              shippingCost: shippingCost,
+                              paymentVaName: paymentVaName,
+                              products: products as List<ProductQuantity>));
+                        },
+                        label: 'Bayar Sekarang',
+                      ),
+                    );
                   },
-                  label: 'Bayar Sekarang',
                 ),
               );
             },

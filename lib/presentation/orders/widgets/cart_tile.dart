@@ -39,6 +39,7 @@ class CartTile extends StatelessWidget {
             ),
           ],
         ),
+        enabled: isEditable,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 10.0),
           decoration: BoxDecoration(
@@ -91,58 +92,60 @@ class CartTile extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0)),
-                                    child: InkWell(
-                                      onTap: () {
-                                        final Product? pr = data.product;
-                                        if (pr == null) return;
-                                        context
-                                            .read<CheckoutBloc>()
-                                            .add(CheckoutEvent.removeItem(pr));
-                                      },
-                                      child: const ColoredBox(
-                                        color: AppColors.primary,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: Icon(
-                                            Icons.remove,
-                                            color: AppColors.white,
+                                  isEditable
+                                      ? ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5.0)),
+                                          child: InkWell(
+                                            onTap: () {
+                                              final Product? pr = data.product;
+                                              if (pr == null) return;
+                                              context.read<CheckoutBloc>().add(
+                                                  CheckoutEvent.removeItem(pr));
+                                            },
+                                            child: const ColoredBox(
+                                              color: AppColors.primary,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(
+                                                  Icons.remove,
+                                                  color: AppColors.white,
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                        )
+                                      : const SpaceWidth(4.0),
                                   const SpaceWidth(4.0),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text('${data.quantity}'),
                                   ),
                                   const SpaceWidth(4.0),
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(5.0)),
-                                    child: InkWell(
-                                      onTap: () {
-                                        final Product? pr = data.product;
-                                        if (pr == null) return;
-                                        context
-                                            .read<CheckoutBloc>()
-                                            .add(CheckoutEvent.addItem(pr));
-                                      },
-                                      child: const ColoredBox(
-                                        color: AppColors.primary,
-                                        child: Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: Icon(
-                                            Icons.add,
-                                            color: AppColors.white,
+                                  isEditable
+                                      ? ClipRRect(
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5.0)),
+                                          child: InkWell(
+                                            onTap: () {
+                                              final Product? pr = data.product;
+                                              if (pr == null) return;
+                                              context.read<CheckoutBloc>().add(
+                                                  CheckoutEvent.addItem(pr));
+                                            },
+                                            child: const ColoredBox(
+                                              color: AppColors.primary,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(4.0),
+                                                child: Icon(
+                                                  Icons.add,
+                                                  color: AppColors.white,
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                        )
+                                      : const SpaceWidth(4.0),
                                 ],
                               ),
                             ),
