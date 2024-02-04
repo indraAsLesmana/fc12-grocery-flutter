@@ -422,9 +422,12 @@ class PaymentDetailPage extends StatelessWidget {
                   builder: (context, state) {
                     return state.maybeWhen(
                       loading: () => const SizedBox(
-                          height: 48,
-                          width: 48,
-                          child: CircularProgressIndicator()),
+                        height: 48,
+                        width: 48,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
                       orElse: () => Button.filled(
                         disabled: paymentMethod == '',
                         onPressed: () {
