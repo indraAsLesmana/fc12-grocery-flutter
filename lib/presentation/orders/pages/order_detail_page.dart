@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/core/core.dart';
 import 'package:flutter_fic12_grocery_app/core/extensions/double_ext%20copy.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
+import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
+import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/widgets/cart_tile.dart';
 
@@ -25,14 +27,24 @@ class OrderDetailPage extends StatefulWidget {
 class _OrderDetailPageState extends State<OrderDetailPage> {
   @override
   void initState() {
-    // context.read<CheckoutBloc>().add(CheckoutEvent);
+    final List<ProductQuantity> listProduct =
+        context.read<CheckoutBloc>().state.maybeWhen(
+            loaded: (products, _, __, ___, ____, ______) {
+              return products;
+            },
+            orElse: () => []);
 
     context.read<CostBloc>().add(CostEvent.getCost(
           origin: '2102', // merchant location, hardcode to Tanah Abang
           destination: widget.selectedAddress.districtId ?? "2103",
-          weight: 1000, // quantity * 1000
+          weight: listProduct.fold(
+              0,
+              (previousValue, element) =>
+                  previousValue +
+                  ((element.quantity ?? 0) * 1000)), // quantity * 1000
           courier: 'jne',
         ));
+
     super.initState();
   }
 
@@ -71,6 +83,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                     itemCount: products.length,
                     itemBuilder: (context, index) => CartTile(
                       data: products[index],
+                      isEditable: false,
                     ),
                     separatorBuilder: (context, index) =>
                         const SpaceHeight(16.0),

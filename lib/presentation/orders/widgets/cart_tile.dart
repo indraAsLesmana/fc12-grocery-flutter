@@ -10,7 +10,8 @@ import '../../home/bloc/checkout/checkout_bloc.dart';
 
 class CartTile extends StatelessWidget {
   final ProductQuantity data;
-  const CartTile({super.key, required this.data});
+  final bool isEditable;
+  const CartTile({super.key, required this.data, this.isEditable = true});
 
   @override
   Widget build(BuildContext context) {

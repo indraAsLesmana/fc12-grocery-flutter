@@ -17,6 +17,7 @@ class CostBloc extends Bloc<CostEvent, CostState> {
       final response = await rajaongkirRemoteDatasource.getCost(
         event.origin,
         event.destination,
+        event.weight,
         'jne',
       );
       response.fold(

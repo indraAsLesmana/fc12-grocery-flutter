@@ -63,7 +63,7 @@ class RajaongkirRemoteDatasource {
   }
 
   Future<Either<String, CostResponseModel>> getCost(
-      String origin, String destination, String courier) async {
+      String origin, String destination, int weight, String courier) async {
     final url = Uri.parse('https://pro.rajaongkir.com/api/cost');
     final response = await http.post(
       url,
@@ -75,7 +75,7 @@ class RajaongkirRemoteDatasource {
         'originType': 'subdistrict',
         'destination': destination,
         'destinationType': 'subdistrict',
-        'weight': '1000',
+        'weight': weight.toString(),
         'courier': courier,
       },
     ).interceptWithChuck(ChuckInterceptor().intercept);
