@@ -6,6 +6,7 @@ import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_a
 import 'package:flutter_fic12_grocery_app/data/models/category_response_model/category_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/order_model/order_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/rajaongkir_model/rajaongkir_remote_datasource.dart';
+import 'package:flutter_fic12_grocery_app/firebase_messanging_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/add_address/add_address_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/address/address_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/city/city_bloc.dart';
@@ -28,6 +29,8 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await FirebaseMessagingRemoteDatasource().initialize();
   runApp(const MyApp());
 }
 
