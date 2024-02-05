@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CheckoutEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -30,7 +30,7 @@ mixin _$CheckoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -42,7 +42,7 @@ mixin _$CheckoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -55,7 +55,7 @@ mixin _$CheckoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -66,7 +66,7 @@ mixin _$CheckoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -77,7 +77,7 @@ mixin _$CheckoutEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -108,35 +108,35 @@ class _$CheckoutEventCopyWithImpl<$Res, $Val extends CheckoutEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ResetImplCopyWith<$Res> {
+  factory _$$ResetImplCopyWith(
+          _$ResetImpl value, $Res Function(_$ResetImpl) then) =
+      __$$ResetImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$CheckoutEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$ResetImplCopyWithImpl<$Res>
+    extends _$CheckoutEventCopyWithImpl<$Res, _$ResetImpl>
+    implements _$$ResetImplCopyWith<$Res> {
+  __$$ResetImplCopyWithImpl(
+      _$ResetImpl _value, $Res Function(_$ResetImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ResetImpl implements _Reset {
+  const _$ResetImpl();
 
   @override
   String toString() {
-    return 'CheckoutEvent.started()';
+    return 'CheckoutEvent.reset()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType && other is _$ResetImpl);
   }
 
   @override
@@ -145,7 +145,7 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -154,13 +154,13 @@ class _$StartedImpl implements _Started {
         addShippingService,
     required TResult Function(Product product) removeOrder,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -169,13 +169,13 @@ class _$StartedImpl implements _Started {
         addShippingService,
     TResult? Function(Product product)? removeOrder,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -185,8 +185,8 @@ class _$StartedImpl implements _Started {
     TResult Function(Product product)? removeOrder,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -194,7 +194,7 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -202,13 +202,13 @@ class _$StartedImpl implements _Started {
     required TResult Function(_AddShippingService value) addShippingService,
     required TResult Function(_RemoveOrder value) removeOrder,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -216,13 +216,13 @@ class _$StartedImpl implements _Started {
     TResult? Function(_AddShippingService value)? addShippingService,
     TResult? Function(_RemoveOrder value)? removeOrder,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -231,15 +231,15 @@ class _$StartedImpl implements _Started {
     TResult Function(_RemoveOrder value)? removeOrder,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements CheckoutEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _Reset implements CheckoutEvent {
+  const factory _Reset() = _$ResetImpl;
 }
 
 /// @nodoc
@@ -306,7 +306,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -321,7 +321,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -336,7 +336,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -355,7 +355,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -369,7 +369,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -383,7 +383,7 @@ class _$AddItemImpl implements _AddItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -472,7 +472,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -487,7 +487,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -502,7 +502,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -521,7 +521,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -535,7 +535,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -549,7 +549,7 @@ class _$RemoveItemImpl implements _RemoveItem {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -639,7 +639,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -654,7 +654,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -669,7 +669,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -688,7 +688,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -702,7 +702,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -716,7 +716,7 @@ class _$AddAddressIdImpl implements _AddAddressId {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -807,7 +807,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -822,7 +822,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -837,7 +837,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -856,7 +856,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -870,7 +870,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -884,7 +884,7 @@ class _$AddPaymentMethodImpl implements _AddPaymentMethod {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -985,7 +985,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -1000,7 +1000,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -1015,7 +1015,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -1034,7 +1034,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -1048,7 +1048,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -1062,7 +1062,7 @@ class _$AddShippingServiceImpl implements _AddShippingService {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,
@@ -1154,7 +1154,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(Product product) addItem,
     required TResult Function(Product product) removeItem,
     required TResult Function(int addressId) addAddressId,
@@ -1169,7 +1169,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? reset,
     TResult? Function(Product product)? addItem,
     TResult? Function(Product product)? removeItem,
     TResult? Function(int addressId)? addAddressId,
@@ -1184,7 +1184,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(Product product)? addItem,
     TResult Function(Product product)? removeItem,
     TResult Function(int addressId)? addAddressId,
@@ -1203,7 +1203,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddItem value) addItem,
     required TResult Function(_RemoveItem value) removeItem,
     required TResult Function(_AddAddressId value) addAddressId,
@@ -1217,7 +1217,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_Reset value)? reset,
     TResult? Function(_AddItem value)? addItem,
     TResult? Function(_RemoveItem value)? removeItem,
     TResult? Function(_AddAddressId value)? addAddressId,
@@ -1231,7 +1231,7 @@ class _$RemoveOrderImpl implements _RemoveOrder {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddItem value)? addItem,
     TResult Function(_RemoveItem value)? removeItem,
     TResult Function(_AddAddressId value)? addAddressId,

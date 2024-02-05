@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/data/models/order_model/order_request_model.dart';
+import 'package:flutter_fic12_grocery_app/data/models/order_model/order_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
@@ -406,6 +408,8 @@ class PaymentDetailPage extends StatelessWidget {
                       context.pushNamed(
                         RouteConstants.paymentWaiting,
                         pathParameters: PathParameters().toMap(),
+                        extra: OrderResponseModel.fromMap(orderResponseModel)
+                            .order,
                       );
                     },
                     error: (message) {
@@ -421,18 +425,12 @@ class PaymentDetailPage extends StatelessWidget {
                 child: BlocBuilder<OrderBloc, OrderState>(
                   builder: (context, state) {
                     return state.maybeWhen(
-                      loading: () => const SizedBox(
-                        height: 48,
-                        width: 48,
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
                       ),
                       orElse: () => Button.filled(
                         disabled: paymentMethod == '',
                         onPressed: () {
-                          // need to check addressId
-                          // need unsured send product_id on list item
                           context.read<OrderBloc>().add(OrderEvent.doOrder(
                               addressId: addressId,
                               paymentMethod: paymentMethod,

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'order_bloc.dart';
+part of 'status_order_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,79 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$OrderEvent {
+mixin _$StatusOrderEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)
-        doOrder,
+    required TResult Function(int orderId) checkPaymentStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult? Function(int orderId)? checkPaymentStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult Function(int orderId)? checkPaymentStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_DoOrder value) doOrder,
+    required TResult Function(_CheckPaymentStatus value) checkPaymentStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_DoOrder value)? doOrder,
+    TResult? Function(_CheckPaymentStatus value)? checkPaymentStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_DoOrder value)? doOrder,
+    TResult Function(_CheckPaymentStatus value)? checkPaymentStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderEventCopyWith<$Res> {
-  factory $OrderEventCopyWith(
-          OrderEvent value, $Res Function(OrderEvent) then) =
-      _$OrderEventCopyWithImpl<$Res, OrderEvent>;
+abstract class $StatusOrderEventCopyWith<$Res> {
+  factory $StatusOrderEventCopyWith(
+          StatusOrderEvent value, $Res Function(StatusOrderEvent) then) =
+      _$StatusOrderEventCopyWithImpl<$Res, StatusOrderEvent>;
 }
 
 /// @nodoc
-class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
-    implements $OrderEventCopyWith<$Res> {
-  _$OrderEventCopyWithImpl(this._value, this._then);
+class _$StatusOrderEventCopyWithImpl<$Res, $Val extends StatusOrderEvent>
+    implements $StatusOrderEventCopyWith<$Res> {
+  _$StatusOrderEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -104,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$StatusOrderEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -113,18 +92,12 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
+class _$StartedImpl implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderEvent.started()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'OrderEvent.started'));
+  String toString() {
+    return 'StatusOrderEvent.started()';
   }
 
   @override
@@ -140,14 +113,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)
-        doOrder,
+    required TResult Function(int orderId) checkPaymentStatus,
   }) {
     return started();
   }
@@ -156,14 +122,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult? Function(int orderId)? checkPaymentStatus,
   }) {
     return started?.call();
   }
@@ -172,14 +131,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult Function(int orderId)? checkPaymentStatus,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -192,7 +144,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_DoOrder value) doOrder,
+    required TResult Function(_CheckPaymentStatus value) checkPaymentStatus,
   }) {
     return started(this);
   }
@@ -201,7 +153,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_DoOrder value)? doOrder,
+    TResult? Function(_CheckPaymentStatus value)? checkPaymentStatus,
   }) {
     return started?.call(this);
   }
@@ -210,7 +162,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_DoOrder value)? doOrder,
+    TResult Function(_CheckPaymentStatus value)? checkPaymentStatus,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -220,205 +172,99 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   }
 }
 
-abstract class _Started implements OrderEvent {
+abstract class _Started implements StatusOrderEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$DoOrderImplCopyWith<$Res> {
-  factory _$$DoOrderImplCopyWith(
-          _$DoOrderImpl value, $Res Function(_$DoOrderImpl) then) =
-      __$$DoOrderImplCopyWithImpl<$Res>;
+abstract class _$$CheckPaymentStatusImplCopyWith<$Res> {
+  factory _$$CheckPaymentStatusImplCopyWith(_$CheckPaymentStatusImpl value,
+          $Res Function(_$CheckPaymentStatusImpl) then) =
+      __$$CheckPaymentStatusImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {int addressId,
-      String paymentMethod,
-      String shippingService,
-      int shippingCost,
-      String paymentVaName,
-      List<ProductQuantity> products});
+  $Res call({int orderId});
 }
 
 /// @nodoc
-class __$$DoOrderImplCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$DoOrderImpl>
-    implements _$$DoOrderImplCopyWith<$Res> {
-  __$$DoOrderImplCopyWithImpl(
-      _$DoOrderImpl _value, $Res Function(_$DoOrderImpl) _then)
+class __$$CheckPaymentStatusImplCopyWithImpl<$Res>
+    extends _$StatusOrderEventCopyWithImpl<$Res, _$CheckPaymentStatusImpl>
+    implements _$$CheckPaymentStatusImplCopyWith<$Res> {
+  __$$CheckPaymentStatusImplCopyWithImpl(_$CheckPaymentStatusImpl _value,
+      $Res Function(_$CheckPaymentStatusImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addressId = null,
-    Object? paymentMethod = null,
-    Object? shippingService = null,
-    Object? shippingCost = null,
-    Object? paymentVaName = null,
-    Object? products = null,
+    Object? orderId = null,
   }) {
-    return _then(_$DoOrderImpl(
-      addressId: null == addressId
-          ? _value.addressId
-          : addressId // ignore: cast_nullable_to_non_nullable
+    return _then(_$CheckPaymentStatusImpl(
+      null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
               as int,
-      paymentMethod: null == paymentMethod
-          ? _value.paymentMethod
-          : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingService: null == shippingService
-          ? _value.shippingService
-          : shippingService // ignore: cast_nullable_to_non_nullable
-              as String,
-      shippingCost: null == shippingCost
-          ? _value.shippingCost
-          : shippingCost // ignore: cast_nullable_to_non_nullable
-              as int,
-      paymentVaName: null == paymentVaName
-          ? _value.paymentVaName
-          : paymentVaName // ignore: cast_nullable_to_non_nullable
-              as String,
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductQuantity>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DoOrderImpl with DiagnosticableTreeMixin implements _DoOrder {
-  const _$DoOrderImpl(
-      {required this.addressId,
-      required this.paymentMethod,
-      required this.shippingService,
-      required this.shippingCost,
-      required this.paymentVaName,
-      required final List<ProductQuantity> products})
-      : _products = products;
+class _$CheckPaymentStatusImpl implements _CheckPaymentStatus {
+  const _$CheckPaymentStatusImpl(this.orderId);
 
   @override
-  final int addressId;
-  @override
-  final String paymentMethod;
-  @override
-  final String shippingService;
-  @override
-  final int shippingCost;
-  @override
-  final String paymentVaName;
-  final List<ProductQuantity> _products;
-  @override
-  List<ProductQuantity> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
-  }
+  final int orderId;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderEvent.doOrder(addressId: $addressId, paymentMethod: $paymentMethod, shippingService: $shippingService, shippingCost: $shippingCost, paymentVaName: $paymentVaName, products: $products)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderEvent.doOrder'))
-      ..add(DiagnosticsProperty('addressId', addressId))
-      ..add(DiagnosticsProperty('paymentMethod', paymentMethod))
-      ..add(DiagnosticsProperty('shippingService', shippingService))
-      ..add(DiagnosticsProperty('shippingCost', shippingCost))
-      ..add(DiagnosticsProperty('paymentVaName', paymentVaName))
-      ..add(DiagnosticsProperty('products', products));
+  String toString() {
+    return 'StatusOrderEvent.checkPaymentStatus(orderId: $orderId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DoOrderImpl &&
-            (identical(other.addressId, addressId) ||
-                other.addressId == addressId) &&
-            (identical(other.paymentMethod, paymentMethod) ||
-                other.paymentMethod == paymentMethod) &&
-            (identical(other.shippingService, shippingService) ||
-                other.shippingService == shippingService) &&
-            (identical(other.shippingCost, shippingCost) ||
-                other.shippingCost == shippingCost) &&
-            (identical(other.paymentVaName, paymentVaName) ||
-                other.paymentVaName == paymentVaName) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            other is _$CheckPaymentStatusImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      addressId,
-      paymentMethod,
-      shippingService,
-      shippingCost,
-      paymentVaName,
-      const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, orderId);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DoOrderImplCopyWith<_$DoOrderImpl> get copyWith =>
-      __$$DoOrderImplCopyWithImpl<_$DoOrderImpl>(this, _$identity);
+  _$$CheckPaymentStatusImplCopyWith<_$CheckPaymentStatusImpl> get copyWith =>
+      __$$CheckPaymentStatusImplCopyWithImpl<_$CheckPaymentStatusImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)
-        doOrder,
+    required TResult Function(int orderId) checkPaymentStatus,
   }) {
-    return doOrder(addressId, paymentMethod, shippingService, shippingCost,
-        paymentVaName, products);
+    return checkPaymentStatus(orderId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult? Function(int orderId)? checkPaymentStatus,
   }) {
-    return doOrder?.call(addressId, paymentMethod, shippingService,
-        shippingCost, paymentVaName, products);
+    return checkPaymentStatus?.call(orderId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(
-            int addressId,
-            String paymentMethod,
-            String shippingService,
-            int shippingCost,
-            String paymentVaName,
-            List<ProductQuantity> products)?
-        doOrder,
+    TResult Function(int orderId)? checkPaymentStatus,
     required TResult orElse(),
   }) {
-    if (doOrder != null) {
-      return doOrder(addressId, paymentMethod, shippingService, shippingCost,
-          paymentVaName, products);
+    if (checkPaymentStatus != null) {
+      return checkPaymentStatus(orderId);
     }
     return orElse();
   }
@@ -427,61 +273,51 @@ class _$DoOrderImpl with DiagnosticableTreeMixin implements _DoOrder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_DoOrder value) doOrder,
+    required TResult Function(_CheckPaymentStatus value) checkPaymentStatus,
   }) {
-    return doOrder(this);
+    return checkPaymentStatus(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_DoOrder value)? doOrder,
+    TResult? Function(_CheckPaymentStatus value)? checkPaymentStatus,
   }) {
-    return doOrder?.call(this);
+    return checkPaymentStatus?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_DoOrder value)? doOrder,
+    TResult Function(_CheckPaymentStatus value)? checkPaymentStatus,
     required TResult orElse(),
   }) {
-    if (doOrder != null) {
-      return doOrder(this);
+    if (checkPaymentStatus != null) {
+      return checkPaymentStatus(this);
     }
     return orElse();
   }
 }
 
-abstract class _DoOrder implements OrderEvent {
-  const factory _DoOrder(
-      {required final int addressId,
-      required final String paymentMethod,
-      required final String shippingService,
-      required final int shippingCost,
-      required final String paymentVaName,
-      required final List<ProductQuantity> products}) = _$DoOrderImpl;
+abstract class _CheckPaymentStatus implements StatusOrderEvent {
+  const factory _CheckPaymentStatus(final int orderId) =
+      _$CheckPaymentStatusImpl;
 
-  int get addressId;
-  String get paymentMethod;
-  String get shippingService;
-  int get shippingCost;
-  String get paymentVaName;
-  List<ProductQuantity> get products;
+  int get orderId;
   @JsonKey(ignore: true)
-  _$$DoOrderImplCopyWith<_$DoOrderImpl> get copyWith =>
+  _$$CheckPaymentStatusImplCopyWith<_$CheckPaymentStatusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$OrderState {
+mixin _$StatusOrderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
+    required TResult Function(String status) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -489,7 +325,7 @@ mixin _$OrderState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult? Function(String status)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -497,7 +333,7 @@ mixin _$OrderState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult Function(String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -530,16 +366,16 @@ mixin _$OrderState {
 }
 
 /// @nodoc
-abstract class $OrderStateCopyWith<$Res> {
-  factory $OrderStateCopyWith(
-          OrderState value, $Res Function(OrderState) then) =
-      _$OrderStateCopyWithImpl<$Res, OrderState>;
+abstract class $StatusOrderStateCopyWith<$Res> {
+  factory $StatusOrderStateCopyWith(
+          StatusOrderState value, $Res Function(StatusOrderState) then) =
+      _$StatusOrderStateCopyWithImpl<$Res, StatusOrderState>;
 }
 
 /// @nodoc
-class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
-    implements $OrderStateCopyWith<$Res> {
-  _$OrderStateCopyWithImpl(this._value, this._then);
+class _$StatusOrderStateCopyWithImpl<$Res, $Val extends StatusOrderState>
+    implements $StatusOrderStateCopyWith<$Res> {
+  _$StatusOrderStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -556,7 +392,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$StatusOrderStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -565,18 +401,12 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderState.initial()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'OrderState.initial'));
+  String toString() {
+    return 'StatusOrderState.initial()';
   }
 
   @override
@@ -593,7 +423,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
+    required TResult Function(String status) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -604,7 +434,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult? Function(String status)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -615,7 +445,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult Function(String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -663,7 +493,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements OrderState {
+abstract class _Initial implements StatusOrderState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -676,7 +506,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$StatusOrderStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -685,18 +515,12 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+class _$LoadingImpl implements _Loading {
   const _$LoadingImpl();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderState.loading()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'OrderState.loading'));
+  String toString() {
+    return 'StatusOrderState.loading()';
   }
 
   @override
@@ -713,7 +537,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
+    required TResult Function(String status) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -724,7 +548,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult? Function(String status)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -735,7 +559,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult Function(String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -783,7 +607,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   }
 }
 
-abstract class _Loading implements OrderState {
+abstract class _Loading implements StatusOrderState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -793,12 +617,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Map<String, dynamic> orderResponseModel});
+  $Res call({String status});
 }
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$StatusOrderStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -807,43 +631,28 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderResponseModel = null,
+    Object? status = null,
   }) {
     return _then(_$LoadedImpl(
-      null == orderResponseModel
-          ? _value._orderResponseModel
-          : orderResponseModel // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
-  const _$LoadedImpl(final Map<String, dynamic> orderResponseModel)
-      : _orderResponseModel = orderResponseModel;
-
-  final Map<String, dynamic> _orderResponseModel;
-  @override
-  Map<String, dynamic> get orderResponseModel {
-    if (_orderResponseModel is EqualUnmodifiableMapView)
-      return _orderResponseModel;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_orderResponseModel);
-  }
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(this.status);
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderState.loaded(orderResponseModel: $orderResponseModel)';
-  }
+  final String status;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderState.loaded'))
-      ..add(DiagnosticsProperty('orderResponseModel', orderResponseModel));
+  String toString() {
+    return 'StatusOrderState.loaded(status: $status)';
   }
 
   @override
@@ -851,13 +660,11 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._orderResponseModel, _orderResponseModel));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_orderResponseModel));
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
@@ -870,10 +677,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
+    required TResult Function(String status) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(orderResponseModel);
+    return loaded(status);
   }
 
   @override
@@ -881,10 +688,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult? Function(String status)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(orderResponseModel);
+    return loaded?.call(status);
   }
 
   @override
@@ -892,12 +699,12 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult Function(String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(orderResponseModel);
+      return loaded(status);
     }
     return orElse();
   }
@@ -940,11 +747,10 @@ class _$LoadedImpl with DiagnosticableTreeMixin implements _Loaded {
   }
 }
 
-abstract class _Loaded implements OrderState {
-  const factory _Loaded(final Map<String, dynamic> orderResponseModel) =
-      _$LoadedImpl;
+abstract class _Loaded implements StatusOrderState {
+  const factory _Loaded(final String status) = _$LoadedImpl;
 
-  Map<String, dynamic> get orderResponseModel;
+  String get status;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -961,7 +767,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$StatusOrderStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -983,23 +789,15 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
+class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'OrderState.error(message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'OrderState.error'))
-      ..add(DiagnosticsProperty('message', message));
+  String toString() {
+    return 'StatusOrderState.error(message: $message)';
   }
 
   @override
@@ -1024,7 +822,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Map<String, dynamic> orderResponseModel) loaded,
+    required TResult Function(String status) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -1035,7 +833,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult? Function(String status)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1046,7 +844,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Map<String, dynamic> orderResponseModel)? loaded,
+    TResult Function(String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1094,7 +892,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements OrderState {
+abstract class _Error implements StatusOrderState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;

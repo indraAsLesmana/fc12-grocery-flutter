@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
+import 'package:flutter_fic12_grocery_app/data/models/order_model/order_response_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/models/address_model.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/pages/add_address_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/pages/address_page.dart';
@@ -96,8 +97,8 @@ class AppRouter {
                             GoRoute(
                               name: RouteConstants.paymentWaiting,
                               path: RouteConstants.paymentWaitingPath,
-                              builder: (context, state) =>
-                                  const PaymentWaitingPage(),
+                              builder: (context, state) => PaymentWaitingPage(
+                                  orders: (state.extra as Order)),
                             ),
                           ],
                         ),

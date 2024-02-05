@@ -17,6 +17,7 @@ import 'package:flutter_fic12_grocery_app/presentation/home/bloc/category/catego
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
+import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/status_order/status_order_bloc.dart';
 
 import 'core/router/app_router.dart';
 
@@ -66,6 +67,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => OrderBloc(OrderApi()),
         ),
+        BlocProvider(
+          create: (context) => StatusOrderBloc(OrderApi()),
+        )
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

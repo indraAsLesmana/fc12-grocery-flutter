@@ -30,4 +30,23 @@ class OrderApi {
       return left('Error');
     }
   }
+
+  Future<Either<String, String>> checkPaymentStatus(int orderId) async {
+    final authData = await AuthLocalDatasource().getAuthData();
+    final response = await http.get(
+      Uri.parse('${Variables.baseUrl}/api/order/$orderId'),
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+        'Authorization': 'Bearer ${authData!.accessToken}'
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return right(data['order']['status']);
+    } else {
+      return left('Error');
+    }
+  }
 }
