@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Variables {
   //starter
   static const String _rajaOngkirStarterBaseUrl =
@@ -16,7 +18,9 @@ class Variables {
   static String get baseUrl {
     switch (_envConfig) {
       case Environment.local:
-        return 'http://127.0.0.1:8000';
+        return Platform.isAndroid
+            ? 'http://192.168.2.195:8000'
+            : 'http://127.0.0.1:8000';
       case Environment.staging:
         return "https://fc12.asianpower.store";
       case Environment.localFly:
