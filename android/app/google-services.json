@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193922720160",
+    "project_id": "fic-course",
+    "storage_bucket": "fic-course.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193922720160:android:f1a5ac798f9d2a139584c5",
+        "android_client_info": {
+          "package_name": "com.example.flutter_fic12_grocery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_KV1qBjFAYg7P4EtOR1MUvtFe4ELGAxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

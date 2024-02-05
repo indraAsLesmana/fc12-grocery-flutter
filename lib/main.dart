@@ -18,10 +18,16 @@ import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checko
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/status_order/status_order_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'core/router/app_router.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
