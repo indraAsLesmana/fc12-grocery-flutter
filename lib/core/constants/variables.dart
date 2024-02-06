@@ -19,7 +19,7 @@ class Variables {
     switch (_envConfig) {
       case Environment.local:
         return Platform.isAndroid
-            ? 'http://192.168.2.195:8000'
+            ? 'http://192.168.2.215:8000'
             : 'http://127.0.0.1:8000';
       case Environment.staging:
         return "https://fc12.asianpower.store";

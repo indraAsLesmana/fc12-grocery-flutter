@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
+import 'package:flutter_fic12_grocery_app/firebase_messanging_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -82,12 +83,15 @@ class _LoginPageState extends State<LoginPage> {
             listener: (context, state) {
               state.maybeWhen(
                 orElse: () {},
-                loaded: (data) {
+                loaded: (data) async {
                   AuthLocalDatasource().saveAuthData(data);
-                  context.goNamed(
-                    RouteConstants.root,
-                    pathParameters: PathParameters().toMap(),
-                  );
+                  await FirebaseMessagingRemoteDatasource().initialize();
+                  if (context.mounted) {
+                    context.goNamed(
+                      RouteConstants.root,
+                      pathParameters: PathParameters().toMap(),
+                    );
+                  }
                 },
                 error: (message) {
                   ScaffoldMessenger.of(context).showSnackBar(
