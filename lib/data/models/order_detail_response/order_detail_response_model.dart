@@ -197,7 +197,7 @@ class Address {
 class OrderItem {
   final int? id;
   final int? orderId;
-  final int? productId;
+  final String? productId;
   final int? quantity;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -245,11 +245,11 @@ class OrderItem {
 
 class Product {
   final int? id;
-  final int? categoryId;
+  final String? category;
   final String? name;
   final String? description;
   final String? image;
-  final int? price;
+  final String? price;
   final int? stock;
   final int? isAvailable;
   final DateTime? createdAt;
@@ -257,7 +257,7 @@ class Product {
 
   Product({
     this.id,
-    this.categoryId,
+    this.category,
     this.name,
     this.description,
     this.image,
@@ -274,7 +274,7 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> json) => Product(
         id: json["id"],
-        categoryId: json["category_id"],
+        category: json["category"],
         name: json["name"],
         description: json["description"],
         image: json["image"],
@@ -291,7 +291,7 @@ class Product {
 
   Map<String, dynamic> toMap() => {
         "id": id,
-        "category_id": categoryId,
+        "category": category,
         "name": name,
         "description": description,
         "image": image,
@@ -301,6 +301,20 @@ class Product {
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
       };
+
+  double? getPriceAsDouble() {
+    if (price != null) {
+      // Extract the numerical value from the price string
+      RegExp regExp = RegExp(r'\d+(\.\d+)?');
+      RegExpMatch? match = regExp.firstMatch(price!);
+      if (match != null) {
+        String numericValue = match.group(0)!;
+
+        return (double.tryParse(numericValue) ?? 0) * 189.0; // 1 rs to IDR
+      }
+    }
+    return null;
+  }
 }
 
 class User {

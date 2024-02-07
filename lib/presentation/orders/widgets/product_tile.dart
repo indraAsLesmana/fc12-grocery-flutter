@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fic12_grocery_app/core/extensions/string_ext.dart';
+import 'package:flutter_fic12_grocery_app/core/extensions/double_ext.dart';
 import 'package:flutter_fic12_grocery_app/data/models/order_detail_response/order_detail_response_model.dart';
 
 import '../../../core/components/spaces.dart';
@@ -42,7 +42,7 @@ class ProductTile extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '${data.product!.price?.currencyFormatRp} x ${data.quantity} = ${(data.product!.price! * data.quantity!).currencyFormatRp}',
+                    '${data.product!.getPriceAsDouble()?.currencyFormatRp} x ${data.quantity} = ${((data.product!.getPriceAsDouble() ?? 0) * (data.quantity ?? 0)).currencyFormatRp}',
                     style: const TextStyle(
                       color: AppColors.primary,
                       fontSize: 16,

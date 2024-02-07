@@ -109,9 +109,10 @@ class _PaymentWaitingPageState extends State<PaymentWaitingPage> {
                           context.pushNamed(
                             RouteConstants.trackingOrder,
                             pathParameters: PathParameters().toMap(),
+                            extra: widget.orders.id,
                           );
                         },
-                        label: 'Lacak Pesanan',
+                        label: 'Lacak Pesanan', // need to unsure work correctly
                       ),
                     ),
                     const SpaceWidth(20.0),
