@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/core/core.dart';
-import 'package:flutter_fic12_grocery_app/core/extensions/double_ext%20copy.dart';
+import 'package:flutter_fic12_grocery_app/core/extensions/double_ext.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';

@@ -7,6 +7,7 @@ import 'package:flutter_fic12_grocery_app/data/models/location_model/city_respon
 import 'package:flutter_fic12_grocery_app/data/models/location_model/province_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/location_model/subdistrict_response_model.dart';
 import 'package:flutter_fic12_grocery_app/data/models/order_model/cost_response_model.dart';
+import 'package:flutter_fic12_grocery_app/data/models/tracking_response_model/tracking_response_model.dart';
 import 'package:http/http.dart' as http;
 
 class RajaongkirRemoteDatasource {
@@ -81,6 +82,25 @@ class RajaongkirRemoteDatasource {
     ).interceptWithChuck(ChuckInterceptor().intercept);
     if (response.statusCode == 200) {
       return right(CostResponseModel.fromJson(response.body));
+    } else {
+      return left('Error');
+    }
+  }
+
+  //tracking
+  Future<Either<String, TrackingResponseModel>> getWaybill(
+      String courier, String waybill) async {
+    final url = Uri.parse('https://pro.rajaongkir.com/api/waybill');
+    final response = await http.post(
+      url,
+      headers: {'key': VariablesPrivate.rajaOngkierKey},
+      body: {
+        'waybill': waybill,
+        'courier': courier,
+      },
+    );
+    if (response.statusCode == 200) {
+      return right(TrackingResponseModel.fromJson(response.body));
     } else {
       return left('Error');
     }
