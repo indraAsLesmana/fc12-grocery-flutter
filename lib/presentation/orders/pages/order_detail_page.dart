@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
 import 'package:flutter_fic12_grocery_app/core/core.dart';
 import 'package:flutter_fic12_grocery_app/core/extensions/double_ext.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_response_model.dart';
@@ -35,8 +36,11 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
             orElse: () => []);
 
     context.read<CostBloc>().add(CostEvent.getCost(
-          origin: '2102', // merchant location, hardcode to Tanah Abang
-          destination: widget.selectedAddress.districtId ?? "2103",
+          // origin: '2102', // merchant location, hardcode to Tanah Abang
+          origin: Variables.usingPro ? '2102' : '152', // 152 jakarta pusat
+          destination: Variables.usingPro
+              ? (widget.selectedAddress.districtId ?? '22')
+              : '22', // 22 bandung
           weight: listProduct.fold(
               0,
               (previousValue, element) =>

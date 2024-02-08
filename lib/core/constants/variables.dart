@@ -9,8 +9,8 @@ class Variables {
   static const String _rajaOngkirProBaseUrl = 'https://pro.rajaongkir.com/api';
 
   //configurable
-  static const usingPro = true;
-  static const _envConfig = Environment.local;
+  static const usingPro = false;
+  static const _envConfig = Environment.staging;
 
   static String get rajaOngkierBaseUrl =>
       usingPro ? _rajaOngkirProBaseUrl : _rajaOngkirStarterBaseUrl;

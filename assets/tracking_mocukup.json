@@ -1,0 +1,116 @@
+{
+    "rajaongkir": {
+        "query": {
+            "waybill": "005233704414",
+            "courier": "sicepat"
+        },
+        "status": {
+            "code": 200,
+            "description": "OK"
+        },
+        "result": {
+            "delivered": true,
+            "summary": {
+                "courier_code": "sicepat",
+                "courier_name": "SiCepat Express",
+                "waybill_number": "005233704414",
+                "service_code": "REG",
+                "waybill_date": "2023-12-28",
+                "shipper_name": "ACE Indonesia",
+                "receiver_name": "Indra Agus Lesmana",
+                "origin": "Kota Tasikmalaya",
+                "destination": "Solokan Jeruk, Kab. Bandung",
+                "status": "DELIVERED"
+            },
+            "details": {
+                "waybill_number": "005233704414",
+                "waybill_date": "2023-12-28",
+                "waybill_time": "01:48:00",
+                "weight": "1",
+                "origin": "Kota Tasikmalaya",
+                "destination": "Solokan Jeruk, Kab. Bandung",
+                "shippper_name": "ACE Indonesia",
+                "shipper_address1": "",
+                "shipper_address2": "",
+                "shipper_address3": "",
+                "shipper_city": "Kota Tasikmalaya",
+                "receiver_name": "Indra Agus Lesmana",
+                "receiver_address1": "",
+                "receiver_address2": "",
+                "receiver_address3": "",
+                "receiver_city": "Solokan Jeruk, Kab. Bandung"
+            },
+            "manifest": [
+                {
+                    "manifest_code": "PICKREQ",
+                    "manifest_description": "Terima permintaan pick up dari [Tokopedia]",
+                    "manifest_date": "2023-12-27",
+                    "manifest_time": "09:28",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "PICK",
+                    "manifest_description": "Paket telah di pick up oleh [SIGESIT - ]",
+                    "manifest_date": "2023-12-27",
+                    "manifest_time": "18:48",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "IN",
+                    "manifest_description": "Paket telah di input (manifested) di Tasikmalaya [Tasikmalaya Mangkubumi]",
+                    "manifest_date": "2023-12-27",
+                    "manifest_time": "18:48",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "OUT",
+                    "manifest_description": "Paket keluar dari Tasikmalaya [Tasikmalaya Mangkubumi]",
+                    "manifest_date": "2023-12-27",
+                    "manifest_time": "20:58",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "IN",
+                    "manifest_description": "Paket telah di terima di Bandung [Middle Mile Bandung]",
+                    "manifest_date": "2023-12-28",
+                    "manifest_time": "09:14",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "OUT",
+                    "manifest_description": "Paket keluar dari Bandung [Middle Mile Bandung]",
+                    "manifest_date": "2023-12-28",
+                    "manifest_time": "09:39",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "IN",
+                    "manifest_description": "Paket telah di terima di Bandung [Bandung Majalaya]",
+                    "manifest_date": "2023-12-28",
+                    "manifest_time": "11:01",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "ANT",
+                    "manifest_description": "Paket dibawa [SIGESIT - Kiki Nuari]",
+                    "manifest_date": "2023-12-29",
+                    "manifest_time": "07:29",
+                    "city_name": ""
+                },
+                {
+                    "manifest_code": "DELIVERED",
+                    "manifest_description": "Paket diterima oleh [Indra  - (YBS) Yang Bersangkutan]",
+                    "manifest_date": "2023-12-29",
+                    "manifest_time": "08:53",
+                    "city_name": ""
+                }
+            ],
+            "delivery_status": {
+                "status": "DELIVERED",
+                "pod_receiver": "Indra  - (YBS) Yang Bersangkutan",
+                "pod_date": "2023-12-29",
+                "pod_time": "08:53"
+            }
+        }
+    }
+}
