@@ -32,15 +32,6 @@ import 'firebase_options.dart';
 import 'core/router/app_router.dart';
 
 Future<void> main() async {
-  // if (PlatformUtils.isMobile) {
-  //   WidgetsFlutterBinding.ensureInitialized();
-  //   await Firebase.initializeApp(
-  //     options: DefaultFirebaseOptions.currentPlatform,
-  //   );
-  //   await FirebaseMessagingRemoteDatasource().initialize();
-  // }
-  // runApp(const MyApp());
-
   final runnableApp = _buildRunnableApp(
     isWeb: kIsWeb,
     webAppWidth: 800.0,
