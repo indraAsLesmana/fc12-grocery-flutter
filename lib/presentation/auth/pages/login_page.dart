@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_local_datasource.dart';
 import 'package:flutter_fic12_grocery_app/firebase_messanging_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/login/login_bloc.dart';
+import 'package:flutter_fic12_grocery_app/utils.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/components/buttons.dart';
@@ -85,7 +88,10 @@ class _LoginPageState extends State<LoginPage> {
                 orElse: () {},
                 loaded: (data) async {
                   AuthLocalDatasource().saveAuthData(data);
-                  await FirebaseMessagingRemoteDatasource().initialize();
+                  if (PlatformUtils.isMobile) {
+                    await FirebaseMessagingRemoteDatasource().initialize();
+                  }
+
                   if (context.mounted) {
                     context.goNamed(
                       RouteConstants.root,

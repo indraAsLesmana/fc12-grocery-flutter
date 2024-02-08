@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
@@ -23,17 +25,19 @@ import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order_detail/
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/status_order/status_order_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/tracking/tracking_bloc.dart';
+import 'package:flutter_fic12_grocery_app/utils.dart';
 import 'firebase_options.dart';
 
 import 'core/router/app_router.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  await FirebaseMessagingRemoteDatasource().initialize();
+  if (PlatformUtils.isMobile) {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    await FirebaseMessagingRemoteDatasource().initialize();
+  }
   runApp(const MyApp());
 }
 
