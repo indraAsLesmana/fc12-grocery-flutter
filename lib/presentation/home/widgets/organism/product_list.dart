@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
+import 'package:flutter_fic12_grocery_app/utils.dart';
 
 import '../../../../core/components/spaces.dart';
 import '../product_card.dart';
@@ -30,8 +31,8 @@ class ProductList extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: PlatformUtils.isMobile ? 2 : 4,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 55.0,
             childAspectRatio:

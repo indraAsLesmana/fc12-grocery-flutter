@@ -31,6 +31,9 @@ class CategoryButton extends StatelessWidget {
               width: 70.0,
               child: Text(
                 label,
+                maxLines: 2,
+                overflow: TextOverflow.clip,
+                // softWrap: true,
                 style: const TextStyle(),
                 textAlign: TextAlign.center,
               ),
