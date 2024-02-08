@@ -95,8 +95,8 @@ class RajaongkirRemoteDatasource {
       url,
       headers: {'key': VariablesPrivate.rajaOngkierKey},
       body: {
-        'waybill': waybill,
-        'courier': courier,
+        'waybill': '005233704414',
+        'courier': 'sicepat', //jne,  sicepat
       },
     );
     if (response.statusCode == 200) {

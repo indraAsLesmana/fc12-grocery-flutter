@@ -6,12 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/components/buttons.dart';
 import '../../../core/components/spaces.dart';
-import '../../../core/core.dart';
-import '../../home/models/product_model.dart';
-import '../../home/models/store_model.dart';
-import '../models/track_record_model.dart';
 import '../widgets/product_tile.dart';
-import '../widgets/tracking_horizontal.dart';
 
 class TrackingOrderPage extends StatefulWidget {
   final int orderId;
@@ -25,12 +20,21 @@ class TrackingOrderPage extends StatefulWidget {
 }
 
 class _TrackingOrderPageState extends State<TrackingOrderPage> {
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
   @override
   void initState() {
     context
         .read<OrderDetailBloc>()
         .add(OrderDetailEvent.getOrderDetail(widget.orderId));
     super.initState();
+  }
+
+  Future<void> _refresData() async {
+    context
+        .read<OrderDetailBloc>()
+        .add(OrderDetailEvent.getOrderDetail(widget.orderId));
   }
 
   @override
@@ -48,65 +52,78 @@ class _TrackingOrderPageState extends State<TrackingOrderPage> {
               );
             },
             loaded: (orderDetail) {
-              return ListView(
-                padding: const EdgeInsets.all(20.0),
-                children: [
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: orderDetail.orderItems?.length ?? 0,
-                    itemBuilder: (context, index) => ProductTile(
-                      data: orderDetail.orderItems![index],
+              return RefreshIndicator(
+                key: _refreshIndicatorKey,
+                onRefresh: _refresData,
+                child: ListView(
+                  padding: const EdgeInsets.all(20.0),
+                  children: [
+                    ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: orderDetail.orderItems?.length ?? 0,
+                      itemBuilder: (context, index) => ProductTile(
+                        data: orderDetail.orderItems![index],
+                      ),
+                      separatorBuilder: (context, index) =>
+                          const SpaceHeight(16.0),
                     ),
-                    separatorBuilder: (context, index) =>
-                        const SpaceHeight(16.0),
-                  ),
-                  const SpaceHeight(20.0),
-                  // TrackingHorizontal(trackRecords: trackRecords),
-                  Button.outlined(
-                    onPressed: () {
-                      context.pushNamed(
-                        RouteConstants.shippingDetail,
-                        pathParameters: PathParameters().toMap(),
-                        extra: orderDetail.shippingResi.toString(),
-                      );
-                    },
-                    label: 'Detail pelacakan pengiriman',
-                  ),
-                  const SpaceHeight(20.0),
-                  const Text(
-                    'Info Pengiriman',
-                    style: TextStyle(
-                      fontSize: 20,
+                    const SpaceHeight(20.0),
+                    // TrackingHorizontal(trackRecords: trackRecords),
+                    Button.outlined(
+                      onPressed: () {
+                        if (orderDetail.shippingResi == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text("Please wait for shipping resi"),
+                            ),
+                          );
+                          return;
+                        }
+                        context.pushNamed(
+                          RouteConstants.shippingDetail,
+                          pathParameters: PathParameters().toMap(),
+                          extra: orderDetail.shippingResi.toString(),
+                        );
+                      },
+                      label: 'Detail pelacakan pengiriman',
                     ),
-                  ),
-                  const SpaceHeight(20.0),
-                  const Text(
-                    'Alamat Pesanan',
-                    style: TextStyle(
-                      fontSize: 16,
+                    const SpaceHeight(20.0),
+                    const Text(
+                      'Info Pengiriman',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                  Text(
-                    orderDetail.address?.fullAddress ?? "",
-                    style: TextStyle(
-                      fontSize: 16,
+                    const SpaceHeight(20.0),
+                    const Text(
+                      'Alamat Pesanan',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  const SpaceHeight(16.0),
-                  const Text(
-                    'Penerima',
-                    style: TextStyle(
-                      fontSize: 16,
+                    Text(
+                      orderDetail.address?.fullAddress ?? "",
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  Text(
-                    orderDetail.user?.name ?? "",
-                    style: TextStyle(
-                      fontSize: 16,
+                    const SpaceHeight(16.0),
+                    const Text(
+                      'Penerima',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ],
+                    Text(
+                      orderDetail.address?.name ?? "",
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
           );

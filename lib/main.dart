@@ -22,6 +22,7 @@ import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_b
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order_detail/order_detail_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/status_order/status_order_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/tracking/tracking_bloc.dart';
 import 'firebase_options.dart';
 
 import 'core/router/app_router.dart';
@@ -86,6 +87,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => OrderDetailBloc(OrderApi()),
+        ),
+        BlocProvider(
+          create: (context) => TrackingBloc(RajaongkirRemoteDatasource()),
         ),
       ],
       child: MaterialApp.router(
