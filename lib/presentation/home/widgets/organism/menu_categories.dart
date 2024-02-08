@@ -29,6 +29,7 @@ class _MenuCategoriesState extends State<MenuCategories> {
         return state.maybeWhen(
           loaded: (categories) => Row(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ...categories.map(
                 (category) => Flexible(

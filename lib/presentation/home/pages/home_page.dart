@@ -35,11 +35,6 @@ class _HomePageState extends State<HomePage> {
     Assets.images.fruitBanner3.path,
     Assets.images.fruitBanner4.path,
   ];
-  final List<String> banners2 = [
-    Assets.images.banner2.path,
-    Assets.images.banner2.path,
-    Assets.images.banner2.path,
-  ];
 
   final AllProductBloc featureProductBloc = AllProductBloc(ProductApi());
   final AllProductBloc spesialProductBloc = AllProductBloc(ProductApi());
