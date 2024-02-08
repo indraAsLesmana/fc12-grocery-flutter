@@ -1,9 +1,7 @@
-import 'dart:io';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/data/models/address_model/address_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/category_response_model/category_api.dart';
@@ -24,12 +22,10 @@ import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/history_order
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order_detail/order_detail_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/status_order/status_order_bloc.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/tracking/tracking_bloc.dart';
-import 'package:flutter_fic12_grocery_app/utils.dart';
-import 'firebase_options.dart';
 
 import 'core/router/app_router.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   final runnableApp = _buildRunnableApp(
