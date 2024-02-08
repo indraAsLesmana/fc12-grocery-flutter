@@ -65,11 +65,10 @@ Future<Widget> _buildRunnableApp({
   }
 
   return Center(
-    child: ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 800, minWidth: 800),
-      child: app,
-    ),
-  );
+      child: ConstrainedBox(
+    constraints: BoxConstraints(maxWidth: webAppWidth, minWidth: 800),
+    child: app,
+  ));
 }
 
 class MyApp extends StatelessWidget {
