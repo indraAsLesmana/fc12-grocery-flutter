@@ -221,6 +221,10 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const String trackingMocukup = 'assets/tracking_mocukup.json';
+
+  /// List of all assets
+  static List<String> get values => [trackingMocukup];
 }
 
 class AssetGenImage {

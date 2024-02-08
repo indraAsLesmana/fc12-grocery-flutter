@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
@@ -31,14 +32,44 @@ import 'firebase_options.dart';
 import 'core/router/app_router.dart';
 
 Future<void> main() async {
-  if (PlatformUtils.isMobile) {
+  // if (PlatformUtils.isMobile) {
+  //   WidgetsFlutterBinding.ensureInitialized();
+  //   await Firebase.initializeApp(
+  //     options: DefaultFirebaseOptions.currentPlatform,
+  //   );
+  //   await FirebaseMessagingRemoteDatasource().initialize();
+  // }
+  // runApp(const MyApp());
+
+  final runnableApp = _buildRunnableApp(
+    isWeb: kIsWeb,
+    webAppWidth: 800.0,
+    app: const MyApp(),
+  );
+
+  runApp(await runnableApp);
+}
+
+Future<Widget> _buildRunnableApp({
+  required bool isWeb,
+  required double webAppWidth,
+  required Widget app,
+}) async {
+  if (!isWeb) {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     await FirebaseMessagingRemoteDatasource().initialize();
+    return app;
   }
-  runApp(const MyApp());
+
+  return Center(
+    child: ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 800, minWidth: 800),
+      child: app,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
