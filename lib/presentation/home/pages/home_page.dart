@@ -1,13 +1,11 @@
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/all_product/all_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/widgets/organism/menu_categories.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:badges/badges.dart' as badges;
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/search_input.dart';

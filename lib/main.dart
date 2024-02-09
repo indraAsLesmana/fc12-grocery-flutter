@@ -53,7 +53,7 @@ Future<Widget> _buildRunnableApp({
 
   return Center(
       child: ConstrainedBox(
-    constraints: BoxConstraints(maxWidth: webAppWidth, minWidth: 800),
+    constraints: BoxConstraints(maxWidth: webAppWidth, minWidth: 640),
     child: app,
   ));
 }
