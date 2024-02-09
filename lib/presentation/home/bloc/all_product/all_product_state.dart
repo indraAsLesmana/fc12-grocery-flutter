@@ -7,5 +7,7 @@ class AllProductState with _$AllProductState {
   const factory AllProductState.loaded(List<Product> products) = _Loaded;
   const factory AllProductState.loadedBestSeller(List<Product> products) =
       _LoadedBestSeller;
+  const factory AllProductState.loadedSearch(List<Product> products) =
+      _LoadedSearch;
   const factory AllProductState.error(String message) = _Error;
 }

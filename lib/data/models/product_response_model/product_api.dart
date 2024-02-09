@@ -6,14 +6,16 @@ import 'package:flutter_fic12_grocery_app/data/models/product_response_model/pro
 import 'package:http/http.dart' as http;
 
 class ProductApi {
-  Future<Either<String, ProductResponseModel>> getAllProducts(
-      [String? category]) async {
+  Future<Either<String, ProductResponseModel>> getProducts(
+      {String? category, String? search}) async {
     final uri = Uri.parse('${Variables.baseUrl}/api/products');
     final response = await http
         .get(
           category != null
               ? uri.replace(queryParameters: {'category': category})
-              : uri,
+              : search != null
+                  ? uri.replace(queryParameters: {'search': search})
+                  : uri,
         )
         .interceptWithChuck(ChuckInterceptor().intercept);
 

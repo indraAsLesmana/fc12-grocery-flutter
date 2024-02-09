@@ -6,4 +6,6 @@ class AllProductEvent with _$AllProductEvent {
   const factory AllProductEvent.getProducts() = _GetProducts;
   const factory AllProductEvent.getProductsBestSeller() =
       _GetProductsBestSeller;
+  const factory AllProductEvent.getProductsSearch(String keyword) =
+      _GetProductsSearch;
 }
