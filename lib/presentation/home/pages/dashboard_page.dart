@@ -24,7 +24,6 @@ class _DashboardPageState extends State<DashboardPage> {
   late int _selectedIndex;
   final List<Widget> _pages = [
     const HomePage(),
-    const CartPage(),
     // const SearchPage(),
     // const Center(
     //   child: Text('This Page 1'),
@@ -33,6 +32,7 @@ class _DashboardPageState extends State<DashboardPage> {
     //   child: Text('This Page 2'),
     // ),
     const SearchPage(),
+    const CartPage(),
     // const LogoutPage(),
     const AccountPage(),
   ];
@@ -69,16 +69,6 @@ class _DashboardPageState extends State<DashboardPage> {
             label: 'HOME',
           ),
           BottomNavigationBarItem(
-            icon: Assets.icons.order.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.grey,
-                BlendMode.srcIn,
-              ),
-            ),
-            activeIcon: Assets.icons.order.svg(),
-            label: 'ORDER',
-          ),
-          BottomNavigationBarItem(
             icon: Assets.icons.search.svg(
               colorFilter: const ColorFilter.mode(
                 AppColors.grey,
@@ -87,6 +77,16 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             activeIcon: Assets.icons.search.svg(),
             label: 'EXPLORE',
+          ),
+          BottomNavigationBarItem(
+            icon: Assets.icons.order.svg(
+              colorFilter: const ColorFilter.mode(
+                AppColors.grey,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: Assets.icons.order.svg(),
+            label: 'ORDER',
           ),
           BottomNavigationBarItem(
             icon: Assets.icons.person.svg(
