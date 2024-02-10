@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
   late TextEditingController searchController;
+  String selectedCateogry = 'Fruits';
 
   final List<String> banners1 = [
     Assets.images.fruitBanner1.path,
@@ -41,13 +42,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     searchController = TextEditingController();
     featureProductBloc.add(const AllProductEvent.getProducts());
-    spesialProductBloc.add(const AllProductEvent.getProductsBestSeller());
+    spesialProductBloc.add(const AllProductEvent.getProductsByCategory());
     super.initState();
   }
 
   Future<void> _refreshHomepage() async {
     featureProductBloc.add(const AllProductEvent.getProducts());
-    spesialProductBloc.add(const AllProductEvent.getProductsBestSeller());
+    spesialProductBloc.add(const AllProductEvent.getProductsByCategory());
   }
 
   @override
@@ -118,12 +119,17 @@ class _HomePageState extends State<HomePage> {
             SearchInput(
               controller: searchController,
               onTap: () {
-                context.pushReplacementNamed(
-                  RouteConstants.root,
-                  pathParameters: PathParameters(
-                    rootTab: RootTab.explore,
-                  ).toMap(),
+                context.goNamed(
+                  RouteConstants.searchProduct,
+                  pathParameters: PathParameters().toMap(),
+                  extra: selectedCateogry,
                 );
+                // context.pushReplacementNamed(
+                //   RouteConstants.root,
+                //   pathParameters: PathParameters(
+                //     rootTab: RootTab.explore,
+                //   ).toMap(),
+                // );
               },
             ),
             const SpaceHeight(16.0),
@@ -141,7 +147,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             const SpaceHeight(12.0),
-            const MenuCategories(),
+            MenuCategories(
+              onMenuClick: (String menu) {
+                selectedCateogry = menu;
+                featureProductBloc.add(
+                  AllProductEvent.getProductsByCategory(menu),
+                );
+              },
+            ),
             const SpaceHeight(28.0),
             BlocBuilder<AllProductBloc, AllProductState>(
               bloc: featureProductBloc,
@@ -151,15 +164,23 @@ class _HomePageState extends State<HomePage> {
                     return ProductList(
                       title: 'Featured Product',
                       onSeeAllTap: () {
-                        // context.pushReplacementNamed(RouteConstants.root,
-                        //     pathParameters: PathParameters(
-                        //       rootTab: RootTab.explore,
-                        //     ).toMap(),
-                        //     extra: "Fruits");
                         context.goNamed(
                           RouteConstants.searchProduct,
                           pathParameters: PathParameters().toMap(),
-                          extra: "Fruits",
+                          extra: selectedCateogry,
+                        );
+                      },
+                      items: products,
+                    );
+                  },
+                  loadedByCategory: (products) {
+                    return ProductList(
+                      title: 'Featured Product',
+                      onSeeAllTap: () {
+                        context.goNamed(
+                          RouteConstants.searchProduct,
+                          pathParameters: PathParameters().toMap(),
+                          extra: selectedCateogry,
                         );
                       },
                       items: products,
@@ -182,7 +203,7 @@ class _HomePageState extends State<HomePage> {
               bloc: spesialProductBloc,
               builder: (context, state) {
                 return state.maybeWhen(
-                  loadedBestSeller: (products) {
+                  loadedByCategory: (products) {
                     return ProductList(
                       title: 'Special offers',
                       onSeeAllTap: () {

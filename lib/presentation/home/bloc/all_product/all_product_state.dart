@@ -5,7 +5,7 @@ class AllProductState with _$AllProductState {
   const factory AllProductState.initial() = _Initial;
   const factory AllProductState.loading() = _Loading;
   const factory AllProductState.loaded(List<Product> products) = _Loaded;
-  const factory AllProductState.loadedBestSeller(List<Product> products) =
+  const factory AllProductState.loadedByCategory(List<Product> products) =
       _LoadedBestSeller;
   const factory AllProductState.loadedSearch(List<Product> products) =
       _LoadedSearch;

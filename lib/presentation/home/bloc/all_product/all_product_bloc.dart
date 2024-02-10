@@ -17,8 +17,8 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
       await _fetchProducts(emit: emit);
     });
 
-    on<_GetProductsBestSeller>((event, emit) async {
-      await _fetchProducts(category: 'Leafy', emit: emit);
+    on<_GetProductsByCategory>((event, emit) async {
+      await _fetchProducts(category: event.category ?? 'Leafy', emit: emit);
     });
 
     on<_GetProductsSearch>((event, emit) async {
@@ -41,7 +41,7 @@ class AllProductBloc extends Bloc<AllProductEvent, AllProductState> {
       (l) => emit(const AllProductState.error('Internal Server Error')),
       (r) => emit(
         category != null
-            ? AllProductState.loadedBestSeller(r.data!.data!)
+            ? AllProductState.loadedByCategory(r.data!.data!)
             : search != null
                 ? AllProductState.loadedSearch(r.data!.data!)
                 : AllProductState.loaded(r.data!.data!),

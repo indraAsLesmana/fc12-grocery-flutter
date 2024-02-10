@@ -7,7 +7,8 @@ import 'package:shimmer/shimmer.dart';
 import '../category_button.dart';
 
 class MenuCategories extends StatefulWidget {
-  const MenuCategories({super.key});
+  final Function(String menu) onMenuClick;
+  const MenuCategories({super.key, required this.onMenuClick});
 
   @override
   State<MenuCategories> createState() => _MenuCategoriesState();
@@ -38,7 +39,8 @@ class _MenuCategoriesState extends State<MenuCategories> {
                     imagePath: category.image!,
                     label: category.name!,
                     onPressed: () {
-                      ChuckInterceptor().intercept.showInspector();
+                      // ChuckInterceptor().intercept.showInspector();
+                      widget.onMenuClick(category.name!);
                     },
                   ),
                 ),
