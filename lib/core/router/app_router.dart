@@ -8,6 +8,7 @@ import 'package:flutter_fic12_grocery_app/presentation/address/pages/address_pag
 import 'package:flutter_fic12_grocery_app/presentation/address/pages/edit_address_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/auth/pages/register_page.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/pages/search_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/pages/cart_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/pages/history_order_page.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/pages/order_detail_page.dart';
@@ -57,6 +58,14 @@ class AppRouter {
           ],
         ),
         GoRoute(
+          name: RouteConstants.searchProductPage,
+          path: RouteConstants.searchProductPagePath,
+          builder: (context, state) => SearchPage(
+            sKeyword: (state.extra as String?),
+          ),
+          // builder: (context, state) => const SearchPage(),
+        ),
+        GoRoute(
           name: RouteConstants.root,
           path: RouteConstants.rootPath,
           parentNavigatorKey: _navigatorKey,
@@ -73,6 +82,13 @@ class AppRouter {
               name: RouteConstants.orderList,
               path: RouteConstants.orderListPath,
               builder: (context, state) => const HistoryOrderPage(),
+            ),
+            GoRoute(
+              name: RouteConstants.searchProduct,
+              path: RouteConstants.searchProductPath,
+              builder: (context, state) => SearchPage(
+                sKeyword: (state.extra as String?),
+              ),
             ),
             GoRoute(
                 name: RouteConstants.cart,

@@ -16,7 +16,18 @@ EventTransformer<Event> debounce<Event>(Duration duration) {
 
 class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
   final ProductApi _productApi;
-  SearchProductBloc(this._productApi) : super(const _Empty()) {
+  SearchProductBloc(this._productApi) : super(const _Loading()) {
+    on<_ArgumentPass>((event, emit) async {
+      // implement product search by category
+      final response = await _productApi.getProducts(category: event.keyword);
+      response.fold(
+        (l) => emit(const SearchProductState.onError('Internal Server Error')),
+        (r) => emit((r.data?.data?.isNotEmpty == true)
+            ? SearchProductState.onLoaded(r.data!.data!)
+            : const SearchProductState.onNotFound()),
+      );
+    });
+
     on<_TextChanged>(transformer: debounce(_duration), (event, emit) async {
       // if (event.keyword?.isEmpty ?? true) return emit(const _Empty());
       if ((event.keyword?.isEmpty ?? true) ||

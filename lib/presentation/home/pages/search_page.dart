@@ -3,12 +3,10 @@ import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic12_grocery_app/core/assets/assets.gen.dart';
-
 import 'package:flutter_fic12_grocery_app/core/components/search_input.dart';
 import 'package:flutter_fic12_grocery_app/core/components/spaces.dart';
 import 'package:flutter_fic12_grocery_app/core/router/app_router.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
-import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/search_product/search_product_bloc.dart';
@@ -17,9 +15,11 @@ import 'package:go_router/go_router.dart';
 
 class SearchPage extends StatefulWidget {
   final bool? requestSearchFocus;
+  final String? sKeyword;
   const SearchPage({
     Key? key,
     this.requestSearchFocus,
+    this.sKeyword,
   }) : super(key: key);
 
   @override
@@ -37,6 +37,9 @@ class _SearchPageState extends State<SearchPage> {
     //   _focusNode.requestFocus();
     // }
     _focusNode.requestFocus();
+    if (widget.sKeyword case var key?) {
+      _blocSearchProduct.add(SearchProductEvent.onPassingArgument(key));
+    }
     super.initState();
   }
 

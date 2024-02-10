@@ -20,18 +20,21 @@ mixin _$SearchProductEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String? keyword) onTextChanged,
+    required TResult Function(String? keyword) onPassingArgument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String? keyword)? onTextChanged,
+    TResult? Function(String? keyword)? onPassingArgument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String? keyword)? onTextChanged,
+    TResult Function(String? keyword)? onPassingArgument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SearchProductEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_TextChanged value) onTextChanged,
+    required TResult Function(_ArgumentPass value) onPassingArgument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TextChanged value)? onTextChanged,
+    TResult? Function(_ArgumentPass value)? onPassingArgument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TextChanged value)? onTextChanged,
+    TResult Function(_ArgumentPass value)? onPassingArgument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String? keyword) onTextChanged,
+    required TResult Function(String? keyword) onPassingArgument,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String? keyword)? onTextChanged,
+    TResult? Function(String? keyword)? onPassingArgument,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String? keyword)? onTextChanged,
+    TResult Function(String? keyword)? onPassingArgument,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_TextChanged value) onTextChanged,
+    required TResult Function(_ArgumentPass value) onPassingArgument,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TextChanged value)? onTextChanged,
+    TResult? Function(_ArgumentPass value)? onPassingArgument,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TextChanged value)? onTextChanged,
+    TResult Function(_ArgumentPass value)? onPassingArgument,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -242,6 +254,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String? keyword) onTextChanged,
+    required TResult Function(String? keyword) onPassingArgument,
   }) {
     return onTextChanged(keyword);
   }
@@ -251,6 +264,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String? keyword)? onTextChanged,
+    TResult? Function(String? keyword)? onPassingArgument,
   }) {
     return onTextChanged?.call(keyword);
   }
@@ -260,6 +274,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String? keyword)? onTextChanged,
+    TResult Function(String? keyword)? onPassingArgument,
     required TResult orElse(),
   }) {
     if (onTextChanged != null) {
@@ -273,6 +288,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_TextChanged value) onTextChanged,
+    required TResult Function(_ArgumentPass value) onPassingArgument,
   }) {
     return onTextChanged(this);
   }
@@ -282,6 +298,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_TextChanged value)? onTextChanged,
+    TResult? Function(_ArgumentPass value)? onPassingArgument,
   }) {
     return onTextChanged?.call(this);
   }
@@ -291,6 +308,7 @@ class _$TextChangedImpl implements _TextChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_TextChanged value)? onTextChanged,
+    TResult Function(_ArgumentPass value)? onPassingArgument,
     required TResult orElse(),
   }) {
     if (onTextChanged != null) {
@@ -306,6 +324,145 @@ abstract class _TextChanged implements SearchProductEvent {
   String? get keyword;
   @JsonKey(ignore: true)
   _$$TextChangedImplCopyWith<_$TextChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ArgumentPassImplCopyWith<$Res> {
+  factory _$$ArgumentPassImplCopyWith(
+          _$ArgumentPassImpl value, $Res Function(_$ArgumentPassImpl) then) =
+      __$$ArgumentPassImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? keyword});
+}
+
+/// @nodoc
+class __$$ArgumentPassImplCopyWithImpl<$Res>
+    extends _$SearchProductEventCopyWithImpl<$Res, _$ArgumentPassImpl>
+    implements _$$ArgumentPassImplCopyWith<$Res> {
+  __$$ArgumentPassImplCopyWithImpl(
+      _$ArgumentPassImpl _value, $Res Function(_$ArgumentPassImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? keyword = freezed,
+  }) {
+    return _then(_$ArgumentPassImpl(
+      freezed == keyword
+          ? _value.keyword
+          : keyword // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ArgumentPassImpl implements _ArgumentPass {
+  const _$ArgumentPassImpl(this.keyword);
+
+  @override
+  final String? keyword;
+
+  @override
+  String toString() {
+    return 'SearchProductEvent.onPassingArgument(keyword: $keyword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ArgumentPassImpl &&
+            (identical(other.keyword, keyword) || other.keyword == keyword));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, keyword);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ArgumentPassImplCopyWith<_$ArgumentPassImpl> get copyWith =>
+      __$$ArgumentPassImplCopyWithImpl<_$ArgumentPassImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String? keyword) onTextChanged,
+    required TResult Function(String? keyword) onPassingArgument,
+  }) {
+    return onPassingArgument(keyword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String? keyword)? onTextChanged,
+    TResult? Function(String? keyword)? onPassingArgument,
+  }) {
+    return onPassingArgument?.call(keyword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String? keyword)? onTextChanged,
+    TResult Function(String? keyword)? onPassingArgument,
+    required TResult orElse(),
+  }) {
+    if (onPassingArgument != null) {
+      return onPassingArgument(keyword);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_TextChanged value) onTextChanged,
+    required TResult Function(_ArgumentPass value) onPassingArgument,
+  }) {
+    return onPassingArgument(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_TextChanged value)? onTextChanged,
+    TResult? Function(_ArgumentPass value)? onPassingArgument,
+  }) {
+    return onPassingArgument?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_TextChanged value)? onTextChanged,
+    TResult Function(_ArgumentPass value)? onPassingArgument,
+    required TResult orElse(),
+  }) {
+    if (onPassingArgument != null) {
+      return onPassingArgument(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ArgumentPass implements SearchProductEvent {
+  const factory _ArgumentPass(final String? keyword) = _$ArgumentPassImpl;
+
+  String? get keyword;
+  @JsonKey(ignore: true)
+  _$$ArgumentPassImplCopyWith<_$ArgumentPassImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

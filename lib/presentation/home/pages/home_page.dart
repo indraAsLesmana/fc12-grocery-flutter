@@ -131,7 +131,14 @@ class _HomePageState extends State<HomePage> {
             const SpaceHeight(12.0),
             TitleContent(
               title: 'Categories',
-              onSeeAllTap: () {},
+              onSeeAllTap: () {
+                context.pushReplacementNamed(
+                  RouteConstants.root,
+                  pathParameters: PathParameters(
+                    rootTab: RootTab.explore,
+                  ).toMap(),
+                );
+              },
             ),
             const SpaceHeight(12.0),
             const MenuCategories(),
@@ -143,7 +150,18 @@ class _HomePageState extends State<HomePage> {
                   loaded: (products) {
                     return ProductList(
                       title: 'Featured Product',
-                      onSeeAllTap: () {},
+                      onSeeAllTap: () {
+                        // context.pushReplacementNamed(RouteConstants.root,
+                        //     pathParameters: PathParameters(
+                        //       rootTab: RootTab.explore,
+                        //     ).toMap(),
+                        //     extra: "Fruits");
+                        context.goNamed(
+                          RouteConstants.searchProduct,
+                          pathParameters: PathParameters().toMap(),
+                          extra: "Fruits",
+                        );
+                      },
                       items: products,
                     );
                   },
@@ -167,7 +185,13 @@ class _HomePageState extends State<HomePage> {
                   loadedBestSeller: (products) {
                     return ProductList(
                       title: 'Special offers',
-                      onSeeAllTap: () {},
+                      onSeeAllTap: () {
+                        context.goNamed(
+                          RouteConstants.searchProduct,
+                          pathParameters: PathParameters().toMap(),
+                          extra: "Leafy",
+                        );
+                      },
                       items: products,
                     );
                   },
