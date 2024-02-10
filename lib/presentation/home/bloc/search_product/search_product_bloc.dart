@@ -26,7 +26,9 @@ class SearchProductBloc extends Bloc<SearchProductEvent, SearchProductState> {
       final response = await _productApi.getProducts(search: event.keyword);
       response.fold(
         (l) => emit(const SearchProductState.onError('Internal Server Error')),
-        (r) => emit(SearchProductState.onLoaded(r.data?.data ?? [])),
+        (r) => emit((r.data?.data?.isNotEmpty == true)
+            ? SearchProductState.onLoaded(r.data!.data!)
+            : const SearchProductState.onNotFound()),
       );
     });
   }

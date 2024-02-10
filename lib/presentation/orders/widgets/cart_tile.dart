@@ -11,7 +11,12 @@ import '../../home/bloc/checkout/checkout_bloc.dart';
 class CartTile extends StatelessWidget {
   final ProductQuantity data;
   final bool isEditable;
-  const CartTile({super.key, required this.data, this.isEditable = true});
+  final bool isSearchCard;
+  const CartTile(
+      {super.key,
+      required this.data,
+      this.isEditable = true,
+      this.isSearchCard = false});
 
   @override
   Widget build(BuildContext context) {
@@ -117,10 +122,38 @@ class CartTile extends StatelessWidget {
                                         )
                                       : const SpaceWidth(4.0),
                                   const SpaceWidth(4.0),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text('${data.quantity}'),
-                                  ),
+                                  isSearchCard
+                                      ? IconButton(
+                                          onPressed: () {
+                                            final Product? pr = data.product;
+                                            if (pr == null) return;
+                                            context
+                                                .read<CheckoutBloc>()
+                                                .add(CheckoutEvent.addItem(pr));
+                                          },
+                                          icon: Container(
+                                            padding: const EdgeInsets.all(4.0),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(50.0),
+                                              color: AppColors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: AppColors.black
+                                                      .withOpacity(0.1),
+                                                  blurRadius: 10.0,
+                                                  offset: const Offset(0, 2),
+                                                  blurStyle: BlurStyle.outer,
+                                                ),
+                                              ],
+                                            ),
+                                            child: Assets.icons.order.svg(),
+                                          ),
+                                        )
+                                      : Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text('${data.quantity}'),
+                                        ),
                                   const SpaceWidth(4.0),
                                   isEditable
                                       ? ClipRRect(

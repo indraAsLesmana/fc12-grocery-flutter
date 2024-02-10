@@ -16,6 +16,7 @@ class MenuCategories extends StatefulWidget {
 class _MenuCategoriesState extends State<MenuCategories> {
   @override
   void initState() {
+    //TODO: this need to integrate with homepage_refresh event
     context
         .read<CategoryBloc>()
         .add(const CategoryProductEvent.getCategoryProduct());

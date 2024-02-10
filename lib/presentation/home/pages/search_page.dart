@@ -1,14 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic12_grocery_app/core/assets/assets.gen.dart';
 
 import 'package:flutter_fic12_grocery_app/core/components/search_input.dart';
 import 'package:flutter_fic12_grocery_app/core/components/spaces.dart';
+import 'package:flutter_fic12_grocery_app/core/router/app_router.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/search_product/search_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/widgets/cart_tile.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchPage extends StatefulWidget {
   final bool? requestSearchFocus;
@@ -24,34 +29,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final _textController = TextEditingController();
   late final FocusNode _focusNode = FocusNode();
-  final SearchProductBloc _searchProductBloc = SearchProductBloc(ProductApi());
-
-  final List<ProductQuantity> cartsProduct = [
-    ProductQuantity(
-        quantity: 0,
-        product: Product(
-          id: 1,
-          productId: "6609882054788",
-          name: 'American cherry Jumbo Size',
-          price: "Rs. 1,100.00",
-          description: 'Earphone',
-          image: [
-            "https://gabbarfarms.com/cdn/shop/products/Grapefruit_187108e7-7e23-4eb4-813b-8478d9d0bcde_600x.jpg?v=1634632245",
-          ],
-        )),
-    ProductQuantity(
-        quantity: 0,
-        product: Product(
-          id: 1,
-          productId: "6594786459780",
-          name: 'American cherry Jumbo Size',
-          price: "Rs. 1,100.00",
-          description: 'Sepatu nike',
-          image: [
-            "https://gabbarfarms.com/cdn/shop/products/AmericanCherriesJumbo_600x.jpg?v=1634623367",
-          ],
-        )),
-  ];
+  final SearchProductBloc _blocSearchProduct = SearchProductBloc(ProductApi());
 
   @override
   void initState() {
@@ -73,38 +51,68 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
+        actions: [
+          BlocBuilder<CheckoutBloc, CheckoutState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                  orElse: () => const SizedBox(),
+                  loaded: (cart, _, __, ___, ____, _____) {
+                    final totalQuantity = cart.fold<int>(
+                      0,
+                      (previousValue, element) =>
+                          previousValue + (element.quantity ?? 0),
+                    );
+                    if (totalQuantity == 0) {
+                      return IconButton(
+                        onPressed: () {
+                          context.goNamed(
+                            RouteConstants.cart,
+                            pathParameters: PathParameters().toMap(),
+                          );
+                        },
+                        icon: Assets.icons.cart.svg(height: 24.0),
+                      );
+                    } else {
+                      return badges.Badge(
+                        badgeContent: Text(
+                          totalQuantity.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            context.goNamed(
+                              RouteConstants.cart,
+                              pathParameters: PathParameters().toMap(),
+                            );
+                          },
+                          icon: Assets.icons.cart.svg(height: 24.0),
+                        ),
+                      );
+                    }
+                  });
+            },
+          ),
+          const SizedBox(width: 16.0),
+        ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        padding: const EdgeInsets.all(8.0),
         children: [
-          // SearchInput(controller: _textController, focusNode: _focusNode),
-          TextField(
+          SearchInput(
             controller: _textController,
-            // focusNode: _focusNode,
-            decoration: const InputDecoration(
-              labelText: 'Search Product',
-              prefixIcon: Icon(Icons.search),
-            ),
+            focusNode: _focusNode,
             onChanged: (value) {
-              _searchProductBloc.add(
-                SearchProductEvent.onTextChanged(value),
-              );
+              _blocSearchProduct.add(SearchProductEvent.onTextChanged(value));
             },
           ),
           const SpaceHeight(16.0),
-          // ListView.separated(
-          //   shrinkWrap: true,
-          //   physics: const NeverScrollableScrollPhysics(),
-          //   itemCount: cartsProduct.length,
-          //   itemBuilder: (context, index) =>
-          //       CartTile(data: cartsProduct[index]),
-          //   separatorBuilder: (context, index) => const SpaceHeight(16.0),
-          // ),
           BlocBuilder<SearchProductBloc, SearchProductState>(
+            bloc: _blocSearchProduct,
             builder: (context, state) {
               return state.maybeWhen(
                 orElse: () => const Text("No result"),
                 onEmpty: () => const Text("Please type"),
+                onNotFound: () => const Text("Product Not found"),
                 onError: (message) => Text(message),
                 onLoaded: (products) {
                   return ListView.separated(
@@ -113,6 +121,7 @@ class _SearchPageState extends State<SearchPage> {
                     itemCount: products.length,
                     itemBuilder: (context, index) => CartTile(
                       isEditable: false,
+                      isSearchCard: true,
                       data: ProductQuantity(
                         quantity: 0,
                         product: products[index],

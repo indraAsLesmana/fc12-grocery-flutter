@@ -316,6 +316,7 @@ mixin _$SearchProductState {
     required TResult Function() onEmpty,
     required TResult Function() onLoading,
     required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
     required TResult Function(String message) onError,
   }) =>
       throw _privateConstructorUsedError;
@@ -324,6 +325,7 @@ mixin _$SearchProductState {
     TResult? Function()? onEmpty,
     TResult? Function()? onLoading,
     TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
     TResult? Function(String message)? onError,
   }) =>
       throw _privateConstructorUsedError;
@@ -332,6 +334,7 @@ mixin _$SearchProductState {
     TResult Function()? onEmpty,
     TResult Function()? onLoading,
     TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
     TResult Function(String message)? onError,
     required TResult orElse(),
   }) =>
@@ -341,6 +344,7 @@ mixin _$SearchProductState {
     required TResult Function(_Empty value) onEmpty,
     required TResult Function(_Loading value) onLoading,
     required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
     required TResult Function(_Error value) onError,
   }) =>
       throw _privateConstructorUsedError;
@@ -349,6 +353,7 @@ mixin _$SearchProductState {
     TResult? Function(_Empty value)? onEmpty,
     TResult? Function(_Loading value)? onLoading,
     TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
     TResult? Function(_Error value)? onError,
   }) =>
       throw _privateConstructorUsedError;
@@ -357,6 +362,7 @@ mixin _$SearchProductState {
     TResult Function(_Empty value)? onEmpty,
     TResult Function(_Loading value)? onLoading,
     TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
     TResult Function(_Error value)? onError,
     required TResult orElse(),
   }) =>
@@ -422,6 +428,7 @@ class _$EmptyImpl implements _Empty {
     required TResult Function() onEmpty,
     required TResult Function() onLoading,
     required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
     required TResult Function(String message) onError,
   }) {
     return onEmpty();
@@ -433,6 +440,7 @@ class _$EmptyImpl implements _Empty {
     TResult? Function()? onEmpty,
     TResult? Function()? onLoading,
     TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
     TResult? Function(String message)? onError,
   }) {
     return onEmpty?.call();
@@ -444,6 +452,7 @@ class _$EmptyImpl implements _Empty {
     TResult Function()? onEmpty,
     TResult Function()? onLoading,
     TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
     TResult Function(String message)? onError,
     required TResult orElse(),
   }) {
@@ -459,6 +468,7 @@ class _$EmptyImpl implements _Empty {
     required TResult Function(_Empty value) onEmpty,
     required TResult Function(_Loading value) onLoading,
     required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
     required TResult Function(_Error value) onError,
   }) {
     return onEmpty(this);
@@ -470,6 +480,7 @@ class _$EmptyImpl implements _Empty {
     TResult? Function(_Empty value)? onEmpty,
     TResult? Function(_Loading value)? onLoading,
     TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
     TResult? Function(_Error value)? onError,
   }) {
     return onEmpty?.call(this);
@@ -481,6 +492,7 @@ class _$EmptyImpl implements _Empty {
     TResult Function(_Empty value)? onEmpty,
     TResult Function(_Loading value)? onLoading,
     TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
     TResult Function(_Error value)? onError,
     required TResult orElse(),
   }) {
@@ -536,6 +548,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() onEmpty,
     required TResult Function() onLoading,
     required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
     required TResult Function(String message) onError,
   }) {
     return onLoading();
@@ -547,6 +560,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? onEmpty,
     TResult? Function()? onLoading,
     TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
     TResult? Function(String message)? onError,
   }) {
     return onLoading?.call();
@@ -558,6 +572,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? onEmpty,
     TResult Function()? onLoading,
     TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
     TResult Function(String message)? onError,
     required TResult orElse(),
   }) {
@@ -573,6 +588,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Empty value) onEmpty,
     required TResult Function(_Loading value) onLoading,
     required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
     required TResult Function(_Error value) onError,
   }) {
     return onLoading(this);
@@ -584,6 +600,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Empty value)? onEmpty,
     TResult? Function(_Loading value)? onLoading,
     TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
     TResult? Function(_Error value)? onError,
   }) {
     return onLoading?.call(this);
@@ -595,6 +612,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Empty value)? onEmpty,
     TResult Function(_Loading value)? onLoading,
     TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
     TResult Function(_Error value)? onError,
     required TResult orElse(),
   }) {
@@ -682,6 +700,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() onEmpty,
     required TResult Function() onLoading,
     required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
     required TResult Function(String message) onError,
   }) {
     return onLoaded(products);
@@ -693,6 +712,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? onEmpty,
     TResult? Function()? onLoading,
     TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
     TResult? Function(String message)? onError,
   }) {
     return onLoaded?.call(products);
@@ -704,6 +724,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? onEmpty,
     TResult Function()? onLoading,
     TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
     TResult Function(String message)? onError,
     required TResult orElse(),
   }) {
@@ -719,6 +740,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Empty value) onEmpty,
     required TResult Function(_Loading value) onLoading,
     required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
     required TResult Function(_Error value) onError,
   }) {
     return onLoaded(this);
@@ -730,6 +752,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Empty value)? onEmpty,
     TResult? Function(_Loading value)? onLoading,
     TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
     TResult? Function(_Error value)? onError,
   }) {
     return onLoaded?.call(this);
@@ -741,6 +764,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Empty value)? onEmpty,
     TResult Function(_Loading value)? onLoading,
     TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
     TResult Function(_Error value)? onError,
     required TResult orElse(),
   }) {
@@ -758,6 +782,126 @@ abstract class _Loaded implements SearchProductState {
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NotFoundImplCopyWith<$Res> {
+  factory _$$NotFoundImplCopyWith(
+          _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
+      __$$NotFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotFoundImplCopyWithImpl<$Res>
+    extends _$SearchProductStateCopyWithImpl<$Res, _$NotFoundImpl>
+    implements _$$NotFoundImplCopyWith<$Res> {
+  __$$NotFoundImplCopyWithImpl(
+      _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NotFoundImpl implements _NotFound {
+  const _$NotFoundImpl();
+
+  @override
+  String toString() {
+    return 'SearchProductState.onNotFound()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotFoundImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onEmpty,
+    required TResult Function() onLoading,
+    required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
+    required TResult Function(String message) onError,
+  }) {
+    return onNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onEmpty,
+    TResult? Function()? onLoading,
+    TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
+    TResult? Function(String message)? onError,
+  }) {
+    return onNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onEmpty,
+    TResult Function()? onLoading,
+    TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
+    TResult Function(String message)? onError,
+    required TResult orElse(),
+  }) {
+    if (onNotFound != null) {
+      return onNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Empty value) onEmpty,
+    required TResult Function(_Loading value) onLoading,
+    required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
+    required TResult Function(_Error value) onError,
+  }) {
+    return onNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Empty value)? onEmpty,
+    TResult? Function(_Loading value)? onLoading,
+    TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
+    TResult? Function(_Error value)? onError,
+  }) {
+    return onNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Empty value)? onEmpty,
+    TResult Function(_Loading value)? onLoading,
+    TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
+    TResult Function(_Error value)? onError,
+    required TResult orElse(),
+  }) {
+    if (onNotFound != null) {
+      return onNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotFound implements SearchProductState {
+  const factory _NotFound() = _$NotFoundImpl;
 }
 
 /// @nodoc
@@ -827,6 +971,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() onEmpty,
     required TResult Function() onLoading,
     required TResult Function(List<Product> products) onLoaded,
+    required TResult Function() onNotFound,
     required TResult Function(String message) onError,
   }) {
     return onError(message);
@@ -838,6 +983,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? onEmpty,
     TResult? Function()? onLoading,
     TResult? Function(List<Product> products)? onLoaded,
+    TResult? Function()? onNotFound,
     TResult? Function(String message)? onError,
   }) {
     return onError?.call(message);
@@ -849,6 +995,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? onEmpty,
     TResult Function()? onLoading,
     TResult Function(List<Product> products)? onLoaded,
+    TResult Function()? onNotFound,
     TResult Function(String message)? onError,
     required TResult orElse(),
   }) {
@@ -864,6 +1011,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Empty value) onEmpty,
     required TResult Function(_Loading value) onLoading,
     required TResult Function(_Loaded value) onLoaded,
+    required TResult Function(_NotFound value) onNotFound,
     required TResult Function(_Error value) onError,
   }) {
     return onError(this);
@@ -875,6 +1023,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Empty value)? onEmpty,
     TResult? Function(_Loading value)? onLoading,
     TResult? Function(_Loaded value)? onLoaded,
+    TResult? Function(_NotFound value)? onNotFound,
     TResult? Function(_Error value)? onError,
   }) {
     return onError?.call(this);
@@ -886,6 +1035,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Empty value)? onEmpty,
     TResult Function(_Loading value)? onLoading,
     TResult Function(_Loaded value)? onLoaded,
+    TResult Function(_NotFound value)? onNotFound,
     TResult Function(_Error value)? onError,
     required TResult orElse(),
   }) {
