@@ -134,13 +134,6 @@ class _HomePageState extends State<HomePage> {
               onSeeAllTap: () {},
             ),
             const SpaceHeight(12.0),
-            // SizedBox(
-            //   child: Shimmer.fromColors(
-            //     baseColor: Colors.grey.shade300,
-            //     highlightColor: Colors.grey.shade100,
-            //     child: const MenuCategories(),
-            //   ),
-            // ),
             const MenuCategories(),
             const SpaceHeight(28.0),
             BlocBuilder<AllProductBloc, AllProductState>(

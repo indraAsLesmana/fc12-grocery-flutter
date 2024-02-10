@@ -34,7 +34,7 @@ class ProductList extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: PlatformUtils.isMobile ? 2 : 4,
             crossAxisSpacing: 10.0,
-            mainAxisSpacing: 55.0,
+            mainAxisSpacing: 28.0,
             childAspectRatio:
                 0.9, // Adjust the aspect ratio for dynamic height per item
           ),
