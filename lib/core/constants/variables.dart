@@ -10,7 +10,7 @@ class Variables {
 
   //configurable
   static const usingPro = false;
-  static const _envConfig = Environment.staging;
+  static const _envConfig = Environment.localFly;
 
   static String get rajaOngkierBaseUrl =>
       usingPro ? _rajaOngkirProBaseUrl : _rajaOngkirStarterBaseUrl;

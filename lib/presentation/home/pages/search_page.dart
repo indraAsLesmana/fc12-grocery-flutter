@@ -1,10 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_fic12_grocery_app/core/components/search_input.dart';
 import 'package:flutter_fic12_grocery_app/core/components/spaces.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_quantity_model/product_quantity.dart';
 import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product.dart';
+import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
+import 'package:flutter_fic12_grocery_app/presentation/home/bloc/search_product/search_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/widgets/cart_tile.dart';
 
 class SearchPage extends StatefulWidget {
@@ -19,8 +22,9 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  late TextEditingController searchController;
+  final _textController = TextEditingController();
   late final FocusNode _focusNode = FocusNode();
+  final SearchProductBloc _searchProductBloc = SearchProductBloc(ProductApi());
 
   final List<ProductQuantity> cartsProduct = [
     ProductQuantity(
@@ -51,7 +55,6 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   void initState() {
-    searchController = TextEditingController();
     // if (widget.requestSearchFocus == true) {
     //   _focusNode.requestFocus();
     // }
@@ -60,23 +63,67 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16.0),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SearchInput(controller: searchController, focusNode: _focusNode),
+          // SearchInput(controller: _textController, focusNode: _focusNode),
+          TextField(
+            controller: _textController,
+            // focusNode: _focusNode,
+            decoration: const InputDecoration(
+              labelText: 'Search Product',
+              prefixIcon: Icon(Icons.search),
+            ),
+            onChanged: (value) {
+              _searchProductBloc.add(
+                SearchProductEvent.onTextChanged(value),
+              );
+            },
+          ),
           const SpaceHeight(16.0),
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: cartsProduct.length,
-            itemBuilder: (context, index) =>
-                CartTile(data: cartsProduct[index]),
-            separatorBuilder: (context, index) => const SpaceHeight(16.0),
+          // ListView.separated(
+          //   shrinkWrap: true,
+          //   physics: const NeverScrollableScrollPhysics(),
+          //   itemCount: cartsProduct.length,
+          //   itemBuilder: (context, index) =>
+          //       CartTile(data: cartsProduct[index]),
+          //   separatorBuilder: (context, index) => const SpaceHeight(16.0),
+          // ),
+          BlocBuilder<SearchProductBloc, SearchProductState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => const Text("No result"),
+                onEmpty: () => const Text("Please type"),
+                onError: (message) => Text(message),
+                onLoaded: (products) {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: products.length,
+                    itemBuilder: (context, index) => CartTile(
+                      isEditable: false,
+                      data: ProductQuantity(
+                        quantity: 0,
+                        product: products[index],
+                      ),
+                    ),
+                    separatorBuilder: (context, index) =>
+                        const SpaceHeight(16.0),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
