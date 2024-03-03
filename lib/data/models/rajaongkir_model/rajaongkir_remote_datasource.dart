@@ -1,5 +1,6 @@
 import 'package:chuck_interceptor/core/chuck_http_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fic12_grocery_app/chuck_interceptor.dart';
 import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
@@ -66,10 +67,31 @@ class RajaongkirRemoteDatasource {
 
   Future<Either<String, CostResponseModel>> getCost(
       String origin, String destination, int weight, String courier) async {
-    final validURL = Variables.usingPro
-        ? '${Variables.rajaOngkierBaseUrl}/api/cost'
-        : '${Variables.rajaOngkierBaseUrl}/cost';
+    final validURL = kIsWeb
+        ? '${Variables.baseUrl}/api/courier-cost'
+        : Variables.usingPro
+            ? '${Variables.rajaOngkierBaseUrl}/api/cost'
+            : '${Variables.rajaOngkierBaseUrl}/cost';
     final url = Uri.parse(validURL);
+    // web handle
+    if (kIsWeb) {
+      final response = await http.post(
+        url,
+        body: {
+          'origin': origin,
+          'destination': destination,
+          'weight': weight.toString(),
+          'courier': courier, // [sicepat, jne] sicepat not tested
+        },
+      ).interceptWithChuck(ChuckInterceptor().intercept);
+      if (response.statusCode == 200) {
+        return right(CostResponseModel.fromJson(response.body));
+      } else {
+        return left('Error');
+      }
+    }
+
+    // mobile handle
     if (Variables.usingPro) {
       final response = await http.post(
         url,
