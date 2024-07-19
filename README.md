@@ -1,6 +1,5 @@
-# flutter_fic12_grocery_app
-
-A new Flutter project.
+## app result
+![My Project](app_preview.png)
 
 ## Getting Started
 
@@ -19,6 +18,23 @@ samples, guidance on mobile development, and a full API reference.
 - docker build -t flutter-web .
 - docker run -d -p 8080:80 --name flutter-web flutter-web
 
+
+## android build
+- expected to be running without note
+
+## web build 
+- make sure you flutter doctor all green
+- flutter build web make sure green if not; try run this command first: 
+flutter pub upgrade
+- if chrome not show on your selected device vscode; run this command first:
+flutter config --enable-web
+- flutter run -d chrome
+
+## iOS build 
+- follow this instruction; make sure you setup all correctly.
+https://docs.flutter.dev/get-started/install/macos/mobile-ios
+- flutter run
+
 ## rajaongkir key
 put your rajaongkir api key
 
@@ -30,3 +46,4 @@ class VariablesPrivate {
   static String get rajaOngkierKey =>
       Variables.usingPro ? _rajaOngkirProKey : _rajaOngkirStarterKey;
 }
+
