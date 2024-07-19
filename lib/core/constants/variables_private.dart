@@ -1,8 +1,7 @@
 import 'package:flutter_fic12_grocery_app/core/constants/variables.dart';
 
-// note: this key related to project
-// https://github.com/indraAsLesmana/fc12-grocery-flutter
-
+/// Class to handle private variables related to RajaOngkir API keys.
+/// Contains static methods to retrieve the appropriate RajaOngkir API key based on the environment.
 class VariablesPrivate {
   static const String _rajaOngkirStarterKey = 'PUT_YOUR_KEY';
   static const String _rajaOngkirProKey = 'PUT_YOUR_KEY';
