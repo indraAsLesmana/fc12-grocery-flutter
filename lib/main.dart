@@ -6,7 +6,6 @@ import 'package:flutter_fic12_grocery_app/data/models/address_model/address_remo
 import 'package:flutter_fic12_grocery_app/data/models/auth_response_model/auth_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/category_response_model/category_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/order_model/order_api.dart';
-import 'package:flutter_fic12_grocery_app/data/models/product_response_model/product_api.dart';
 import 'package:flutter_fic12_grocery_app/data/models/rajaongkir_model/rajaongkir_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/firebase_messanging_remote_datasource.dart';
 import 'package:flutter_fic12_grocery_app/presentation/address/bloc/add_address/add_address_bloc.dart';
@@ -18,7 +17,6 @@ import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/login/login_blo
 import 'package:flutter_fic12_grocery_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/category/category_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/home/bloc/checkout/checkout_bloc.dart';
-import 'package:flutter_fic12_grocery_app/presentation/home/bloc/search_product/search_product_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/cost/cost_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/history_order/history_order_bloc.dart';
 import 'package:flutter_fic12_grocery_app/presentation/orders/bloc/order/order_bloc.dart';
